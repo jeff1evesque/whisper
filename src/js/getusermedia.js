@@ -1,5 +1,5 @@
 /**
- * detect_getusermedia.js:
+ * getusermedia.js:
  */
 
 // Immediately Invoked Functions
