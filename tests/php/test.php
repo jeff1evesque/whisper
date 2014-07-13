@@ -1,12 +1,12 @@
 <?php
 
 /**
- * index.php
+ * test.php
  */
 
 <html>
   <head>
-    <script type='text/javascript' src='src/js/getUserMedia.js'></script>
+    <script type='text/javascript' src='src/js/detect_getUserMedia.js'></script>
   </head>
 
   <body>
