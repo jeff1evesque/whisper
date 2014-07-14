@@ -9,7 +9,7 @@
 <html>
   <head>
     <script type='text/javascript' src='src/js/html_microphone.js'></script>
-    <script type='text/javascript' src='src/js/getUserMedia.js'></script>
+    <script type='text/javascript' src='src/js/initializer.js'></script>
   </head>
 
   <body>
