@@ -2,3 +2,7 @@
 	path = AutobahnPython
 	url = git://github.com/tavendo/AutobahnPython.git
         ignore = dirty
+[submodule "twisted"]
+	path = twisted
+	url = git://github.com/twisted/twisted.git
+        ignore = dirty
