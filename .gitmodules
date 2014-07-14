@@ -1,0 +1,3 @@
+[submodule "AutobahnPython"]
+	path = AutobahnPython
+	url = git://github.com/tavendo/AutobahnPython.git
