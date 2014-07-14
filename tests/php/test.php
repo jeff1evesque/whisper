@@ -8,7 +8,7 @@
 
 <html>
   <head>
-    <script type='text/javascript' src='src/js/binary.js'></script>
+    <script type='text/javascript' src='src/js/html_microphone.js'></script>
     <script type='text/javascript' src='src/js/getUserMedia.js'></script>
   </head>
 
