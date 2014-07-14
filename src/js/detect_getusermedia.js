@@ -1,5 +1,5 @@
 /**
- * getusermedia.js: default to Flash, if `getUserMedia` is not supported
+ * detect_getusermedia.js: add respective classnames for 'getUserMedia', or 'Flash' support
  */
 
 $( document ).ready(function() {
@@ -8,10 +8,10 @@ $( document ).ready(function() {
   navigator.getUserMedia_ = ( navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia );
 
   if ( navigator.getUserMedia_ ) {
-
+    $('microphone').addClass('getusermedia_supported');
   }
   else {
-
+    $('microphone').addclass('flash_supported');
   }
 
 });
