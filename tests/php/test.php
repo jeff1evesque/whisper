@@ -6,6 +6,7 @@
 
 ?>
 
+<!DOCTYPE html>
 <html>
   <head>
     <script type='text/javascript' src='../../src/js/jquery-1.8.3.js'></script>
