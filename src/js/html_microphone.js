@@ -33,9 +33,7 @@ $(document).ready(function() {
   }
 
 // Build HTML:
-  $.each(obj_mic, function(i, data) {
-    container.append(data);
-  }); // closes .each()
+  $container.append(obj_mic);
 
 });
 
