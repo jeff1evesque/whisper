@@ -9,7 +9,7 @@ var audio_context;
 var recorder = null;
 // You might need to change this to full path
 // depending on what web framework you use
-var AUDIO_RECORDER_WORKER = "audioRecorderWorker.js";
+var AUDIO_RECORDER_WORKER = "../../src/js/audioRecorderWorker.js";
 
 // Callback function from the recorder, called
 // for audio volume and audio file blob URL
