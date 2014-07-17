@@ -5,7 +5,7 @@
 
 $(document).ready(function() {
 // local variables
-  var container = $('.microphone')
+  var $container = $('.microphone')
   var obj_mic = {};
 
 // Feature Detection: getUserMedia
