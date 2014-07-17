@@ -20,7 +20,7 @@ $(document).ready(function() {
     obj_mic['br']              = '<br/>';
     obj_mic['div_status']      = 'WebSocket: <div id="webSocketStatus">Not Connected</div>';
     obj_mic['div_volume']      = 'Volume: <div id="volume"></div>';
-    obj_mic['div_volume_max']  = 'Volume Max: <div id="volumneMax"></div>';
+    obj_mic['div_volume_max']  = 'Volume Max: <div id="volumeMax"></div>';
     obj_mic['div_results']     = 'Result: <div id="result"></div>';
     obj_mic['div_error']       = 'Error: <div id="error"></div>';
     obj_mic['div_audio']       = '<div>Audio:</div>';
