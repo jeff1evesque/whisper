@@ -3,10 +3,13 @@
  */
 
 var websocket = null;
+
 // URL of the WebSocket server (ipsikit)
-#var websocket_uri = "ws://108.59.3.115:18875";
+//var websocket_uri = "ws://108.59.3.115:18875";
+
 // URL of the WebSocket server (whisper)
 var websocket_uri = "ws://localhost:90001";
+
 var audio_context;
 var recorder = null;
 // You might need to change this to full path
