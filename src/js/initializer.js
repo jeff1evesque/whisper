@@ -8,7 +8,7 @@ var websocket = null;
 //var websocket_uri = "ws://108.59.3.115:18875";
 
 // URL of the WebSocket server (whisper)
-var websocket_uri = "ws://localhost:90001";
+var websocket_uri = "ws://localhost:9001";
 
 var audio_context;
 var recorder = null;
