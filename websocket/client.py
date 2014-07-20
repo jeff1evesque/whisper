@@ -57,8 +57,8 @@ if __name__ == '__main__':
 
    log.startLogging(sys.stdout)
 
-   factory = WebSocketClientFactory("ws://localhost:9000", debug = False)
+   factory = WebSocketClientFactory("ws://localhost:9001", debug = False)
    factory.protocol = MyClientProtocol
 
-   reactor.connectTCP("127.0.0.1", 9000, factory)
+   reactor.connectTCP("localhost", 9001, factory)
    reactor.run()
