@@ -80,7 +80,7 @@ class StreamingHashServerProtocol(WebSocketServerProtocol):
 
 
 if __name__ == '__main__':
-   factory = WebSocketServerFactory("ws://localhost:9000")
+   factory = WebSocketServerFactory("ws://localhost:9001")
    factory.protocol = StreamingHashServerProtocol
    listenWS(factory)
    reactor.run()
