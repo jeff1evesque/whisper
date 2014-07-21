@@ -23,7 +23,7 @@ from autobahn.twisted.websocket import WebSocketServerFactory, \
                                        WebSocketServerProtocol, \
                                        listenWS
 
-from streaming_client import BATCH_SIZE
+from client import BATCH_SIZE
 
 
 class StreamingHashServerProtocol(WebSocketServerProtocol):
