@@ -1,0 +1,4 @@
+# Ignore and don't commit the following directories
+
+# Ignore and don't commit the following files
+*.pyc
