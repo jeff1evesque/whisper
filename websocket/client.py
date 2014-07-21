@@ -1,6 +1,6 @@
 ###############################################################################
 ##
-##  Copyright (C) 2011-2014 Tavendo GmbH
+##  Copyright (C) 2011-2013 Tavendo GmbH
 ##
 ##  Licensed under the Apache License, Version 2.0 (the "License");
 ##  you may not use this file except in compliance with the License.
@@ -16,49 +16,49 @@
 ##
 ###############################################################################
 
-from autobahn.twisted.websocket import WebSocketClientProtocol, \
-                                       WebSocketClientFactory
+from ranstring import randomByteString
+from twisted.internet import reactor
+
+from autobahn.twisted.websocket import WebSocketClientFactory, \
+                                       WebSocketClientProtocol, \
+                                       connectWS
+
+BATCH_SIZE = 1 * 2**20
 
 
+class StreamingHashClientProtocol(WebSocketClientProtocol):
+   """
+   Streaming WebSockets client that generates stream of random octets
+   sent to WebSockets server as a sequence of batches in one frame, in
+   one message. The server computes a running SHA-256, which it will send
+   every BATCH_SIZE octets back to us. When we receive a response, we
+   repeat by sending another batch of data.
+   """
 
-class MyClientProtocol(WebSocketClientProtocol):
+   def sendOneBatch(self):
+      data = randomByteString(BATCH_SIZE)
 
-   def onConnect(self, response):
-      print("Server connected: {0}".format(response.peer))
+      # Note, that this could complete the frame, when the frame length is
+      # reached. Since the frame length here is 2^63, we don't bother, since
+      # it'll take _very_ long to reach that.
+      self.sendMessageFrameData(data)
 
    def onOpen(self):
-      print("WebSocket connection open.")
-
-      def hello():
-         self.sendMessage(u"Hello, world!".encode('utf8'))
-         self.sendMessage(b"\x00\x01\x03\x04", isBinary = True)
-         self.factory.reactor.callLater(1, hello)
-
-      ## start sending messages every second ..
-      hello()
+      self.count = 0
+      self.beginMessage(isBinary = True)
+      # 2^63 - This is the maximum imposed by the WS protocol
+      self.beginMessageFrame(0x7FFFFFFFFFFFFFFF)
+      self.sendOneBatch()
 
    def onMessage(self, payload, isBinary):
-      if isBinary:
-         print("Binary message received: {0} bytes".format(len(payload)))
-      else:
-         print("Text message received: {0}".format(payload.decode('utf8')))
-
-   def onClose(self, wasClean, code, reason):
-      print("WebSocket connection closed: {0}".format(reason))
-
+      print("Digest for batch {} computed by server: {}".format(self.count, payload.decode('utf8')))
+      self.count += 1
+      self.sendOneBatch()
 
 
 if __name__ == '__main__':
 
-   import sys
-
-   from twisted.python import log
-   from twisted.internet import reactor
-
-   log.startLogging(sys.stdout)
-
-   factory = WebSocketClientFactory("ws://localhost:9001", debug = False)
-   factory.protocol = MyClientProtocol
-
-   reactor.connectTCP("localhost", 9001, factory)
+   factory = WebSocketClientFactory("ws://localhost:9001")
+   factory.protocol = StreamingHashClientProtocol
+   connectWS(factory)
    reactor.run()
