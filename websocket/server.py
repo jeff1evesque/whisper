@@ -1,6 +1,6 @@
 ###############################################################################
 ##
-##  Copyright (C) 2011-2014 Tavendo GmbH
+##  Copyright (C) 2011-2013 Tavendo GmbH
 ##
 ##  Licensed under the Apache License, Version 2.0 (the "License");
 ##  you may not use this file except in compliance with the License.
@@ -16,43 +16,71 @@
 ##
 ###############################################################################
 
-from autobahn.twisted.websocket import WebSocketServerProtocol, \
-                                       WebSocketServerFactory
+import hashlib
+from twisted.internet import reactor
+
+from autobahn.twisted.websocket import WebSocketServerFactory, \
+                                       WebSocketServerProtocol, \
+                                       listenWS
+
+from client import BATCH_SIZE
 
 
-class MyServerProtocol(WebSocketServerProtocol):
+class StreamingHashServerProtocol(WebSocketServerProtocol):
+   """
+   Streaming WebSockets server that computes a running SHA-256 for data
+   received. It will respond every BATCH_SIZE bytes with the digest
+   up to that point. It can receive messages of unlimited number of frames
+   and frames of unlimited length (actually, up to 2^63, which is the
+   WebSockets protocol imposed limit on frame size). Digest is reset upon
+   new message.
+   """
 
-   def onConnect(self, request):
-      print("Client connecting: {0}".format(request.peer))
+   def onMessageBegin(self, isBinary):
+      WebSocketServerProtocol.onMessageBegin(self, isBinary)
+      self.sha256 = hashlib.sha256()
+      self.count = 0
+      self.received = 0
+      self.next = BATCH_SIZE
 
-   def onOpen(self):
-      print("WebSocket connection open.")
+   def onMessageFrameBegin(self, length):
+      WebSocketServerProtocol.onMessageFrameBegin(self, length)
 
-   def onMessage(self, payload, isBinary):
-      if isBinary:
-         print("Binary message received: {0} bytes".format(len(payload)))
+   def onMessageFrameData(self, payload):
+      length = len(payload)
+      self.received += length
+
+      ## when the data received exceeds the next BATCH_SIZE ..
+      if self.received >= self.next:
+
+         ## update digest up to batch size
+         rest = length - (self.received - self.next)
+         self.sha256.update(payload[:rest])
+
+         ## send digest
+         digest = self.sha256.hexdigest()
+         self.sendMessage(digest.encode('utf8'))
+         print("Sent digest for batch {} : {}".format(self.count, digest))
+
+         ## advance to next batch
+         self.next += BATCH_SIZE
+         self.count += 1
+
+         ## .. and update the digest for the rest
+         self.sha256.update(payload[rest:])
       else:
-         print("Text message received: {0}".format(payload.decode('utf8')))
+         ## otherwise we just update the digest for received data
+         self.sha256.update(payload)
 
-      ## echo back message verbatim
-      self.sendMessage(payload, isBinary)
+   def onMessageFrameEnd(self):
+      pass
 
-   def onClose(self, wasClean, code, reason):
-      print("WebSocket connection closed: {0}".format(reason))
-
+   def onMessageEnd(self):
+      pass
 
 
 if __name__ == '__main__':
-
-   import sys
-
-   from twisted.python import log
-   from twisted.internet import reactor
-
-   log.startLogging(sys.stdout)
-
-   factory = WebSocketServerFactory("ws://localhost:9001", debug = False)
-   factory.protocol = MyServerProtocol
-
-   reactor.listenTCP(9001, factory)
+   factory = WebSocketServerFactory("ws://localhost:9001")
+   factory.protocol = StreamingHashServerProtocol
+   listenWS(factory)
    reactor.run()
