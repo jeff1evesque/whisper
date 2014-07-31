@@ -23,7 +23,7 @@ class StreamingHashServerProtocol(WebSocketServerProtocol):
 
    def onMessage(self, isBinary):
       WebSocketServerProtocol.onMessageBegin(self, binary)
-      print 'sending echo:', msg_
+      print 'sending echo:', msg
       self.sendMessage(msg, binary)
 
 if __name__ == '__main__':
