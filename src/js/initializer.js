@@ -8,7 +8,7 @@ function send() {
 };
 
 var sock = null;
-sock = new WebSocket("ws://localhost:9000");
+sock = new WebSocket("ws://localhost:9001");
 console.log("Websocket created...");
 
 sock.onopen = function() {
