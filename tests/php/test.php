@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <div>Sentence to analyze: <input type='text' id='sentence'></div>
+    <div class='message'>Welcome!</div>
     <div class='microphone'>
     </div>
   </body>
