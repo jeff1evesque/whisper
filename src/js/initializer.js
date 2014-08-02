@@ -19,7 +19,3 @@ sock.onclose = function(e) {
 sock.onmessage = function(e) {
   console.log("message received: " + e.data);
 }
-
-function randomByte() {
-  return Math.floor(Math.random()*256).toString(2);
-}
