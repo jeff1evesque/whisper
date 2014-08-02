@@ -28,10 +28,10 @@ $(document).ready(function() {
 
 // Send Random Byte
   $('.buttonStart').click(function() {
-    sock.send(randomByte());
+    startDataStream();
   });
   $('.buttonStop').click(function() {
-
+    endDataStream();
   });
 
 // Function Definitions
@@ -39,13 +39,18 @@ $(document).ready(function() {
     return Math.floor(Math.random()*256).toString(2);
   }
 
-  function streamData {
+  function endDataStream() {
+  // Terminate WebWorker: 'webworker_audio_stream' defined in startDataStream()
+    webworker_audio_stream.terminate();
+  }
+
+  function startDataStream() {
 
   // Check Support: WebWorker is an HTML5 feature that allows javascript to be
   //                run in the background independent of other scripts, without 
-  //                affecting performance of the page.
+  //                affecting the performance of the page.
   //
-  //                webworker_audio_stream.onmessage receives data from the Webworker
+  //                webworker_audio_stream.onmessage receives data from the WebWorker
 
     if(typeof(Worker) !== 'undefined') {
       webworker_audio_stream = new Worker('webworker_audio_stream.js');
