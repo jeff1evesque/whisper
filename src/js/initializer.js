@@ -4,6 +4,9 @@
 
 $(document).ready(function() {
 
+// Local Variables
+  var webworker_stream_audio;
+
 // Create WebSocket
   var sock = null;
   sock = new WebSocket("ws://localhost:9001");
@@ -37,12 +40,23 @@ $(document).ready(function() {
   }
 
   function streamData {
-    if(typeof(Worker) !== 'undefined') {
 
+  // Check Support: WebWorker is an HTML5 feature that allows javascript to be
+  //                run in the background independent of other scripts, without 
+  //                affecting performance of the page.
+  //
+  //                webworker_audio_stream.onmessage receives data from the Webworker
+
+    if(typeof(Worker) !== 'undefined') {
+      webworker_audio_stream = new Worker('webworker_audio_stream.js');
+      webworker_audio_stream.onmessage = function (event) {
+        return event.data;
+      };
     }
     else {
       alert('Error: Your browser does not support "Web Worker"');
     }
+
   }
 
-});
+});  // Closes $(document).ready(function() {}
