@@ -2,20 +2,37 @@
  * initializer.js:
  */
 
+$(document).ready(function() {
 
-var sock = null;
-sock = new WebSocket("ws://localhost:9001");
-console.log("Websocket created...");
+// websocket
+  var sock = null;
+  sock = new WebSocket("ws://localhost:9001");
+  console.log("Websocket created...");
 
-sock.onopen = function() {
-  console.log("connected to server");
-  sock.send("CONNECTED TO YOU");
-}
+// open websocket
+  sock.onopen = function() {
+    console.log("connected to server");
+    sock.send("CONNECTED TO YOU");
+  }
 
-sock.onclose = function(e) {
-  console.log("connection closed (" + e.code + ")");
-}
+// send random byte
+  $('.buttonStart').click(function() {
+    sock.send(randomByte());
+  });
+  $('.buttonStop').click(function() {
 
-sock.onmessage = function(e) {
-  console.log("message received: " + e.data);
-}
+  });
+
+  sock.onclose = function(e) {
+    console.log("connection closed (" + e.code + ")");
+  }
+
+  sock.onmessage = function(e) {
+    console.log("message received: " + e.data);
+  }
+
+  function randomByte() {
+    return Math.floor(Math.random()*256).toString(2);
+  }
+
+});
