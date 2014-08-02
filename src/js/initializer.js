@@ -31,7 +31,9 @@ $(document).ready(function() {
     startDataStream();
   });
   $('.buttonStop').click(function() {
-    endDataStream();
+    if (typeof(webworker_audio_stream) != 'undefined') {
+      endDataStream();
+    }
   });
 
 // Function Definitions
