@@ -5,7 +5,9 @@
 // Stream Data: Each time 'postMessage()' executes in this script, the associated
 //              '.onmessage()' declared within the script that instantiates this
 //              WebWorker script will execute, respectively.
-  postMessage(setTimeout('randomByte()', 1000));
+  onmessage = function (event) {
+    postMessage(randomByte());
+  }
 
 // Function Definitions
   function randomByte() {
