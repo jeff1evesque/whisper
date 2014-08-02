@@ -47,13 +47,20 @@ $(document).ready(function() {
   //                affecting the performance of the page.
   //
   //                webworker_audio_stream.onmessage receives data from the WebWorker
+  //                webworker_audio_stream.postMessage('YOUR-DATA-HERE') sends
+  //                  data to the WebWorker.  The WebWorker receives data as below,
+  //                  with the .onmessage.  However, if no parameters are supplied,
+  //                  postMessage() simple starts the WebWorker.
 
     if(typeof(Worker) !== 'undefined') {
       var path = '../../src/js/webworker_stream_audio.js';
       webworker_audio_stream = new Worker(path);
-      webworker_audio_stream.onmessage = function (event) {
+      webworker_audio_stream.onmessage = function(event) {
+        console.log(event.data);
         return event.data;
-      };
+      }
+  // Starts the WebWorker
+      webworker_audio_stream.postMessage();
     }
     else {
       alert('Error: Your browser does not support "Web Worker"');
