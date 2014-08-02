@@ -4,24 +4,16 @@
 
 $(document).ready(function() {
 
-// websocket
+// Create WebSocket
   var sock = null;
   sock = new WebSocket("ws://localhost:9001");
   console.log("Websocket created...");
 
-// open websocket
+// WebSocket Definitions: executed when websocket performs defined action (i.e. open, close, message, ...)
   sock.onopen = function() {
     console.log("connected to server");
     sock.send("CONNECTED TO YOU");
   }
-
-// send random byte
-  $('.buttonStart').click(function() {
-    sock.send(randomByte());
-  });
-  $('.buttonStop').click(function() {
-
-  });
 
   sock.onclose = function(e) {
     console.log("connection closed (" + e.code + ")");
@@ -31,6 +23,15 @@ $(document).ready(function() {
     console.log("message received: " + e.data);
   }
 
+// Send Fandom Byte
+  $('.buttonStart').click(function() {
+    sock.send(randomByte());
+  });
+  $('.buttonStop').click(function() {
+
+  });
+
+// Function Definitions
   function randomByte() {
     return Math.floor(Math.random()*256).toString(2);
   }
