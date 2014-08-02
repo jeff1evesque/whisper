@@ -35,10 +35,6 @@ $(document).ready(function() {
   });
 
 // Function Definitions
-  function randomByte() {
-    return Math.floor(Math.random()*256).toString(2);
-  }
-
   function endDataStream() {
   // Terminate WebWorker: 'webworker_audio_stream' defined in startDataStream()
     webworker_audio_stream.terminate();
