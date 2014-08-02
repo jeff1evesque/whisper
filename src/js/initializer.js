@@ -36,4 +36,13 @@ $(document).ready(function() {
     return Math.floor(Math.random()*256).toString(2);
   }
 
+  function streamData {
+    if(typeof(Worker) !== 'undefined') {
+
+    }
+    else {
+      alert('Error: Your browser does not support "Web Worker"');
+    }
+  }
+
 });
