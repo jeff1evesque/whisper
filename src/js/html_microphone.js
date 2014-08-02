@@ -15,8 +15,8 @@ $(document).ready(function() {
 
 // HTML Structure: getUserMedia
   if (navigator.getUserMedia) {
-    obj_mic['button_start']    = '<button onclick="start();">Start</button>';
-    obj_mic['button_stop']     = '<button onclick="stop();">Stop</button>';
+    obj_mic['button_start']    = '<button class="buttonStart">Start</button>';
+    obj_mic['button_stop']     = '<button class="buttonStop">Stop</button>';
     obj_mic['br']              = '<br/>';
     obj_mic['div_status']      = 'WebSocket: <div id="webSocketStatus">Not Connected</div>';
     obj_mic['div_volume']      = 'Volume: <div id="volume"></div>';
