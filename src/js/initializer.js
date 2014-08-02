@@ -49,6 +49,7 @@ $(document).ready(function() {
   //                webworker_audio_stream.onmessage receives data from the WebWorker
 
     if(typeof(Worker) !== 'undefined') {
+      var path = '../../src/js/webworker_audio_stream.js';
       webworker_audio_stream = new Worker('webworker_audio_stream.js');
       webworker_audio_stream.onmessage = function (event) {
         return event.data;
