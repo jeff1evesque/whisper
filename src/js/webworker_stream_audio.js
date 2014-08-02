@@ -8,9 +8,7 @@
 //              also applies.
 
   onmessage = function (event) {
-    while (true) {
-      postMessage(randomByte());
-    }
+    setInterval('postMessage(randomByte())', 1000);
   }
 
 // Function Definitions
