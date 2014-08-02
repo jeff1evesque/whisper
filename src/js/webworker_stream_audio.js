@@ -2,8 +2,6 @@
  * webworker_audio_stream.js:
  */
 
-$(document).ready(function() {
-
 // Stream Data: Each time 'postMessage()' executes in this script, the associated
 //              '.onmessage()' declared within the script that instantiates this
 //              WebWorker script will execute, respectively.
@@ -13,6 +11,3 @@ $(document).ready(function() {
   function randomByte() {
     return Math.floor(Math.random()*256).toString(2);
   }
-
-});
-
