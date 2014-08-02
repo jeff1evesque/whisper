@@ -4,9 +4,13 @@
 
 // Stream Data: Each time 'postMessage()' executes in this script, the associated
 //              '.onmessage()' declared within the script that instantiates this
-//              WebWorker script will execute, respectively.
+//              WebWorker script will execute, respectively.  The reverse,
+//              also applies.
+
   onmessage = function (event) {
-    postMessage(randomByte());
+    while (true) {
+      postMessage(randomByte());
+    }
   }
 
 // Function Definitions
