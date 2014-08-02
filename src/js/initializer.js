@@ -23,7 +23,7 @@ $(document).ready(function() {
     console.log("message received: " + e.data);
   }
 
-// Send Fandom Byte
+// Send Random Byte
   $('.buttonStart').click(function() {
     sock.send(randomByte());
   });
