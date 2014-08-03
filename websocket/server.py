@@ -21,6 +21,8 @@ from autobahn.twisted.websocket import WebSocketServerFactory, \
 #    # Prints entire JSON-formatted string nicely
 #    print json.dumps(decoded, sort_keys=True, indent=4)
 #
+#  The following methods get executed on the server side:
+#
 #  onConnect(self, requestOrResponse) callback fired during WebSocket opening handshake
 #    when client connects, or when server connection established (by a client with 
 #    response from server).
