@@ -55,30 +55,32 @@ $(document).ready(function() {
     }
   });
 
-// Function Definitions
+ /**
+  *  endDataStream(): terminates the WebWorker defined in 'startDataStream()'
+  */
+
   function endDataStream() {
-  // Terminate WebWorker: 'webworker_audio_stream' defined in startDataStream()
     webworker_audio_stream.terminate();
   }
 
-  /**
-   *  startDataStream(): connects to a WebWorker.
-   *
-   *                     A WebWorker is an HTML5 feature that allows javascript to be
-   *                     run in the background independent of other scripts (threads), 
-   *                     without affecting the performance of the page.  This portion
-   *                     is considered the 'WebWorker Constructor'.
-   *
-   *  @webworker_audio_stream.onmessage is an event listener to the 'WebWorker'.  The
-   *                     'event.data' parameter is used to acquire data from the WebWorker.
-   *
-   *  @webworker_audio_stream.postMessage('YOUR-DATA-HERE') sends data to the WebWorker.
-   *                     However, if no parameter is supplied, postMessage() simply starts
-   *                     the WebWorker.  The WebWorker receives data from this 
-   *                     'WebWorker' Constructor by implementing the onmessage message:
-   *
-   *                     onmessage = function(event) {console.log(event.data)}
-   */
+ /**
+  *  startDataStream(): connects to a WebWorker.
+  *
+  *                     A WebWorker is an HTML5 feature that allows javascript to be
+  *                     run in the background independent of other scripts (threads), 
+  *                     without affecting the performance of the page.  This portion
+  *                     is considered the 'WebWorker Constructor'.
+  *
+  *  @webworker_audio_stream.onmessage is an event listener to the 'WebWorker'.  The
+  *                     'event.data' parameter is used to acquire data from the WebWorker.
+  *
+  *  @webworker_audio_stream.postMessage('YOUR-DATA-HERE') sends data to the WebWorker.
+  *                     However, if no parameter is supplied, postMessage() simply starts
+  *                     the WebWorker.  The WebWorker receives data from this 
+  *                     'WebWorker' Constructor by implementing the onmessage message:
+  *
+  *                     onmessage = function(event) {console.log(event.data)}
+  */
 
   function startDataStream() {
 

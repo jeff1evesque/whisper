@@ -20,7 +20,10 @@
     setInterval('postMessage(randomByte())', 1000);
   }
 
-// Function Definitions
+ /**
+  *  randomByte: generates a random byte, and returns the binary digit format.
+  */
+
   function randomByte() {
     return Math.floor(Math.random()*256).toString(2);
   }
