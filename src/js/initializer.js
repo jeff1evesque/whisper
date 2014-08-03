@@ -73,9 +73,11 @@ $(document).ready(function() {
    *                     'event.data' parameter is used to acquire data from the WebWorker.
    *
    *  @webworker_audio_stream.postMessage('YOUR-DATA-HERE') sends data to the WebWorker.
-   *                     The WebWorker can receive data from this script by implementing
-   *                     the .onmessage, as done below.  However, if no parameters are
-   *                     are supplied, postMessage() simply starts the WebWorker.
+   *                     However, if no parameter is supplied, postMessage() simply starts
+   *                     the WebWorker.  The WebWorker receives data from this 
+   *                     'WebWorker' Constructor by implementing the onmessage message:
+   *
+   *                     onmessage = function(event) {console.log(event.data)}
    */
 
   function startDataStream() {
