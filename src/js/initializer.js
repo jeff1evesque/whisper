@@ -14,7 +14,7 @@ $(document).ready(function() {
     navigator.getUserMedia = navigator.getUserMedia ||
                              navigator.webkitGetUserMedia ||
                              navigator.mozGetUserMedia;
-    window.URL = window.URL || window.webkitURL;
+    window.AudioContext = window.AudioContext || window.webkitAudioContext;
     audio_context = new AudioContext;
   } catch (e) {
     $('.message').innerHTML = 'Error with Web Audio: ' + e;
