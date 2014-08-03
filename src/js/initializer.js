@@ -9,7 +9,7 @@ $(document).ready(function() {
   var audio_context;
   var websocket_uri = 'ws://localhost:9001';
 
-// Initialize Media Stream
+// Initialize Media Stream (getUserMedia)
   initMediaStream();
 
   try {
