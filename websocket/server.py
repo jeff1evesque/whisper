@@ -3,7 +3,7 @@
 This file contains the server side of the Autobahn websocket service
 """
 
-import hashlib
+import json
 from twisted.internet import reactor
 
 from autobahn.twisted.websocket import WebSocketServerFactory, \
