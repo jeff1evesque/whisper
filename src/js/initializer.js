@@ -20,7 +20,22 @@ $(document).ready(function() {
     $('.message').innerHTML = 'Error with Web Audio: ' + e;
   }
 
-// Prompts users permission to use a media device (camera or microphone)
+ /**
+  *  Prompts users permission to use the requested media device (camera or microphone),
+  *  and initializes the corresponding media stream.
+  *
+  *  navigator.getUserMedia(constraints, sCallback, eCallback)
+  *
+  *  @contraints is an object that specifies which media stream (audio, or video) are
+  *                            being requested by the browser.
+  *
+  *  @sCallback is a callback function, executed if 'getUserMedia' is successful.  If
+  *                            'getUserMedia' is successful, the resulting media stream
+  *                            object is passed to 'sCallback' as its only argument.
+  *
+  *  @eCallback is an optional callback function, executed if 'getUserMedia' fails.
+  */
+
   navigator.getUserMedia({video: false, audio: true}, startUserMedia, function(e) {
     $('.message').innerHTML = 'Error initializing getUserMedia: ' + e;
   });
@@ -100,14 +115,16 @@ $(document).ready(function() {
     }
 
   }  // Closes  function startDataStream() {}
-
+  
  /**
-  *  starUserMedia(): is the 'getUserMedia' callback, which gets executed upon
-  *                   successfully connecting to a media device (camera, or microphone).
-  *                   This function intializes the recorder by instantiating the
-  *                   AudioRecorder() object, defined within 'audioRecorder.js'. 
+  *  startUserMedia(): is the 'getUserMedia' callback, which gets executed upon
+  *                    successfully connecting to a media device (camera, or microphone).
+  *                    This function intializes the recorder by instantiating the
+  *                    AudioRecorder() object, defined within 'audioRecorder.js'. 
   *
   *  @createMediaStreamSource(stream) creates an 'AudioNode' from the stream.
+  *
+  *  @stream is a global variable determined by the first parameter of 'getUserMedia()'.
   */
 
   function startUserMedia(stream) {
