@@ -91,7 +91,8 @@ $(document).ready(function() {
         console.log(event.data);
         return event.data;
       }
-  // Starts the WebWorker
+
+    // Starts the WebWorker
       webworker_audio_stream.postMessage();
     }
     else {
@@ -99,5 +100,21 @@ $(document).ready(function() {
     }
 
   }  // Closes  function startDataStream() {}
+
+ /**
+  *  starUserMedia(): is the 'getUserMedia' callback, which gets executed upon
+  *                   successfully connecting to a media device (camera, or microphone).
+  *                   This function intializes the recorder by instantiating the
+  *                   AudioRecorder() object, defined within 'audioRecorder.js'. 
+  *
+  *  @createMediaStreamSource(stream) creates an 'AudioNode' from the stream.
+  */
+
+  function startUserMedia(stream) {
+    var mediaStreamSource = context.createMediaStreamSource(stream);
+  // Firefox hack https://support.mozilla.org/en-US/questions/984179
+    window.firefox_audio_hack = input;
+    recorder = new AudioRecorder(input, websocket, {}, callbackRecorder);
+  }
 
 });  // Closes $(document).ready(function() {}
