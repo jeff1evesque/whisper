@@ -99,6 +99,36 @@ $(document).ready(function() {
 
  /**
   *  initWebSocket(): initializes the websocket
+  *
+  *  WebSocket Events
+  *
+  *  @Socket.onopen occurs when socket connection is established
+  *  @Socket.onmessage occurs when client receives data from server
+  *  @Socket.onerror occurs when there is an error in communication
+  *  @Socket.onclose occurs when connection is closed
+  *
+  *  WebSocket Methods
+  *
+  *  @Socket.send() method transmits data using the connection
+  *  @Socket.close() method used to terminate any existing connection
+  *
+  *  Send JSON-formatted string to the server
+  *    var msg = {
+  *      type = "message",
+  *      text: document.getElementById("text").value
+  *    };
+  *    Socket.send(JSON.stringify(msg));
+  *
+  *  Receive JSON-formatted string from the server
+  *    var msg = JSON.parse(e.data);
+  *
+  *    switch(msg.type) {
+  *      case 'message':
+  *        clientID = msg.text;
+  *        break;
+  *      case 'username':
+  *      ...
+  *    }
   */ 
 
   function initWebSocket() {
