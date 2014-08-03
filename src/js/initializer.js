@@ -9,37 +9,19 @@ $(document).ready(function() {
   var audio_context;
   var websocket_uri = 'ws://localhost:9001';
 
-// Test 'getUserMedia' Support
+// Initialize Media Stream
+  initMediaStream();
+
   try {
+  // Initialize WebSocket
     initWebSocket();
-    navigator.getUserMedia = navigator.getUserMedia ||
-                             navigator.webkitGetUserMedia ||
-                             navigator.mozGetUserMedia;
+
+  // AudioContext controls the audio processing interface
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     audio_context = new AudioContext;
   } catch (e) {
     $('.message').html('Error with Web Audio: ' + e);
   }
-
- /**
-  *  Prompts users permission to use the requested media device (camera or microphone),
-  *  and initializes the corresponding media stream.
-  *
-  *  navigator.getUserMedia(constraints, sCallback, eCallback)
-  *
-  *  @contraints is an object that specifies which media stream (audio, or video) are
-  *                            being requested by the browser.
-  *
-  *  @sCallback is a callback function, executed if 'getUserMedia' is successful.  If
-  *                            'getUserMedia' is successful, the resulting media stream
-  *                            object is passed to 'sCallback' as its only argument.
-  *
-  *  @eCallback is an optional callback function, executed if 'getUserMedia' fails.
-  */
-
-  navigator.getUserMedia({video: false, audio: true}, startUserMedia, function(e) {
-    $('.message').html('Error initializing getUserMedia: ' + e);
-  });
 
 // Send Random Byte
   $('.buttonStart').click(function() {
@@ -138,6 +120,40 @@ $(document).ready(function() {
       console.log("message received: " + e.data);
     }
 
+  }
+
+ /**
+  *  initMediaStream() : Prompts users permission to use the requested media device
+  *                      (camera or microphone), and initializes the corresponding media
+  *                      stream.
+  *
+  *  navigator.getUserMedia(constraints, sCallback, eCallback)
+  *
+  *  @contraints is an object that specifies which media stream (audio, or video) are
+  *                            being requested by the browser.
+  *
+  *  @sCallback is a callback function, executed if 'getUserMedia' is successful.  If
+  *                            'getUserMedia' is successful, the resulting media stream
+  *                            object is passed to 'sCallback' as its only argument.
+  *
+  *  @eCallback is an optional callback function, executed if 'getUserMedia' fails.
+  */
+
+  function initMediaStream() {
+
+  // Acquire 'getUserMedia' object
+    try {
+      navigator.getUserMedia = navigator.getUserMedia ||
+                               navigator.webkitGetUserMedia ||
+                               navigator.mozGetUserMedia ||
+                               navigator.msGetUserMedia;
+    } catch (e) {
+      $('.message').html('Error with Web Audio: ' + e);
+    }
+
+    navigator.getUserMedia({video: false, audio: true}, startUserMedia, function(e) {
+      $('.message').html('Error initializing getUserMedia: ' + e);
+    });
   }
 
 });  // Closes $(document).ready(function() {}
