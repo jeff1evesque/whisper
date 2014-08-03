@@ -6,13 +6,27 @@ $(document).ready(function() {
 
 // Local Variables
   var webworker_stream_audio;
+  var audio_context;
+
+// Test 'getUserMedia' Support
+  try {
+    initWebSocket();
+    navigator.getUserMedia = navigator.getUserMedia ||
+                             navigator.webkitGetUserMedia ||
+                             navigator.mozGetUserMedia;
+    window.URL = window.URL || window.webkitURL;
+    audio_context = new AudioContext;
+  } catch (e) {
+    $('.message').innerHTML = 'Error with Web Audio: ' + e;
+  }
 
 // Create WebSocket
   var sock = null;
   sock = new WebSocket("ws://localhost:9001");
   console.log("Websocket created...");
 
-// WebSocket Definitions: executed when websocket performs defined action (i.e. open, close, message, ...)
+// WebSocket Definitions: executed when websocket performs defined action 
+//                        (i.e. open, close, message, ...)
   sock.onopen = function() {
     console.log("connected to server");
     sock.send("CONNECTED TO YOU");
@@ -65,9 +79,9 @@ $(document).ready(function() {
       webworker_audio_stream.postMessage();
     }
     else {
-      alert('Error: Your browser does not support "Web Worker"');
+      $('.message').innerHTML = 'Error: Your browser does not support "Web Worker"';
     }
 
-  }
+  }  // Closes  function startDataStream() {}
 
 });  // Closes $(document).ready(function() {}
