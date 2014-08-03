@@ -20,6 +20,11 @@ $(document).ready(function() {
     $('.message').innerHTML = 'Error with Web Audio: ' + e;
   }
 
+// Prompts users permission to use a media device (camera or microphone)
+  navigator.getUserMedia({video: false, audio: true}, startUserMedia, function(e) {
+    $('.message').innerHTML = 'Error initializing getUserMedia: ' + e;
+  });
+
 // Create WebSocket
   var sock = null;
   sock = new WebSocket("ws://localhost:9001");
