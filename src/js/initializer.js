@@ -126,7 +126,7 @@ $(document).ready(function() {
     sock = new WebSocket(websocket_uri);
     console.log("Websocket created...");
 
-  // WebSocket Definitions: executed when websocket method is triggered
+  // WebSocket Definitions: executed when triggered
     sock.onopen = function() {
       console.log("connected to server");
       sock.send("CONNECTED TO YOU");
