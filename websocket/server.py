@@ -14,12 +14,13 @@ from autobahn.twisted.websocket import WebSocketServerFactory, \
 #
 #  Parse JSON-formatted string
 #
-#    json_input = '{ "one": 1, "two": { "list": [ {"item":"A"},{"item":"B"} ] } }'
+#    # Encode JSON-formatted string
+#    json_input = json.dumps([ "one": 1, "two": { "list": [ {"aa":"A"},{"ab":"B"} ] } ])
 #
-#    # prints 'B'
-#    print decoded['two']['list'][1]['item']
+#    # Prints 'B'
+#    print decoded['two']['list'][1]['ab']
 #
-#    # prints nicely entire JSON-formatted string
+#    # Prints entire JSON-formatted string nicely
 #    print json.dumps(decoded, sort_keys=True, indent=4)
 
 class StreamingServerProtocol(WebSocketServerProtocol):
