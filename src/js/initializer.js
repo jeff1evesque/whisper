@@ -122,9 +122,9 @@ $(document).ready(function() {
   *                    This function intializes the recorder by instantiating the
   *                    AudioRecorder() object, defined within 'audioRecorder.js'. 
   *
-  *  @createMediaStreamSource(stream) creates an 'AudioNode' from the stream.
+  *  @createMediaStreamSource(stream) creates an 'AudioNode' from the 'stream' object.
   *
-  *  @stream is a global variable determined by the first parameter of 'getUserMedia()'.
+  *  @stream is a global variable determined by 'navigator.getUserMedia()'.
   */
 
   function startUserMedia(stream) {
