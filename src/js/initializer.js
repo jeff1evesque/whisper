@@ -62,7 +62,7 @@ $(document).ready(function() {
   }
 
   /**
-   *  startDataStream(): connects a webworker to an existing javascript file.
+   *  startDataStream(): connects to a WebWorker.
    *
    *                     A WebWorker is an HTML5 feature that allows javascript to be
    *                     run in the background independent of other scripts (threads), 
