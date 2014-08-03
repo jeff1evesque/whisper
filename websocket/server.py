@@ -40,7 +40,7 @@ from autobahn.twisted.websocket import WebSocketServerFactory, \
 #    closed (WebSocket closing handshake has been finished or the connection was closed
 #    uncleanly).
 #
-#  More interfaces are available:
+#  A more complete list of available 'WebSocket' interfaces:
 #
 #  github.com/tavendo/AutobahnPython/blob/master/autobahn/autobahn/websocket/interfaces.py
 
