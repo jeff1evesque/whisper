@@ -17,7 +17,7 @@ $(document).ready(function() {
     window.AudioContext = window.AudioContext || window.webkitAudioContext;
     audio_context = new AudioContext;
   } catch (e) {
-    $('.message').innerHTML = 'Error with Web Audio: ' + e;
+    $('.message').html('Error with Web Audio: ' + e);
   }
 
  /**
@@ -37,7 +37,7 @@ $(document).ready(function() {
   */
 
   navigator.getUserMedia({video: false, audio: true}, startUserMedia, function(e) {
-    $('.message').innerHTML = 'Error initializing getUserMedia: ' + e;
+    $('.message').html('Error initializing getUserMedia: ' + e);
   });
 
 // Create WebSocket
@@ -111,7 +111,7 @@ $(document).ready(function() {
       webworker_audio_stream.postMessage();
     }
     else {
-      $('.message').innerHTML = 'Error: Your browser does not support "Web Worker"';
+      $('.message').html('Error: Your browser does not support "Web Worker"');
     }
 
   }  // Closes  function startDataStream() {}
