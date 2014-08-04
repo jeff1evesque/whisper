@@ -50,8 +50,8 @@
 	    }
 	};
 
-	this.start = function(sentence){
-	    this.websocket.send("start:"+sentence);
+	this.start = function(){
+	    this.websocket.send("start");
 	    volumeMax = 0;
 	    recording = true;
 	    receivedData = false;
