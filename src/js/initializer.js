@@ -8,7 +8,6 @@
   var audio_context;
   var webworker_stream_audio;
   var websocket_uri = 'ws://localhost:9001';
-  var webworker_path = '../../src/js/webworker_stream_audio.js';
   var WEBWORKER_AUDIO_RECORDER = '../../src/js/audioRecorderWorker.js';
 
 $(document).ready(function() {
@@ -71,43 +70,6 @@ $(document).ready(function() {
   function endDataStream() {
     webworker_audio_stream.terminate();
   }
-
- /**
-  *  startDataStream(): connects to a WebWorker.
-  *
-  *                     A WebWorker is an HTML5 feature that allows javascript to be
-  *                     run in the background independent of other scripts (threads), 
-  *                     without affecting the performance of the page.  This portion
-  *                     is considered the 'WebWorker Constructor'.
-  *
-  *  @webworker_audio_stream.onmessage is an event listener to the 'WebWorker'.  The
-  *                     'event.data' parameter is used to acquire data from the WebWorker.
-  *
-  *  @webworker_audio_stream.postMessage('YOUR-DATA-HERE') sends data to the WebWorker.
-  *                     However, if no parameter is supplied, postMessage() simply starts
-  *                     the WebWorker.  The WebWorker receives data from this 
-  *                     'WebWorker' Constructor by implementing the onmessage message:
-  *
-  *                     onmessage = function(event) {console.log(event.data)}
-  */
-
-  function startDataStream() {
-
-    if(typeof(Worker) !== 'undefined') {
-      webworker_audio_stream = new Worker(webworker_path);
-      webworker_audio_stream.onmessage = function(event) {
-        console.log(event.data);
-        return event.data;
-      }
-
-    // Starts the WebWorker
-      webworker_audio_stream.postMessage();
-    }
-    else {
-      $('.message').html('Error: Your browser does not support "Web Worker"');
-    }
-
-  }  // Closes  function startDataStream() {}
   
  /**
   *  startUserMedia(): is the 'getUserMedia' callback, which gets executed upon
