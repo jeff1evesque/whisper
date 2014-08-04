@@ -10,7 +10,7 @@
 	var receivedData = false;
 	this.context = source.context;
 	this.node = this.context.createScriptProcessor(inputBufferLength, 2, 2);
-	var worker = new Worker(config.worker || AUDIO_RECORDER_WORKER);
+	var worker = new Worker(config.worker || WEBWORKER_AUDIO_RECORDER);
 	worker.postMessage({
 	    command: 'init',
 	    config: {
