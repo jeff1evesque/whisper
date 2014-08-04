@@ -3,8 +3,9 @@
  */
 
 // Global Variables
-  var webworker_stream_audio;
+  var websocket = null;
   var audio_context;
+  var webworker_stream_audio;
   var websocket_uri = 'ws://localhost:9001';
   var webworker_path = '../../src/js/webworker_stream_audio.js';
 
@@ -136,19 +137,22 @@ $(document).ready(function() {
   function initWebSocket() {
 
   // Create WebSocket
-    var sock = null;
-    sock = new WebSocket(websocket_uri);
+    websocket = new WebSocket(websocket_uri);
     console.log("Websocket created...");
 
   // WebSocket Definitions: executed when triggered
-    sock.onopen = function() {
+    websocket.onopen = function() {
       console.log("connected to server");
-      sock.send("CONNECTED TO YOU");
+      websocket.send("CONNECTED TO YOU");
+
+      if (recorder) {
+        recorder.websocket = websocket;
+      }
     }
-    sock.onclose = function(e) {
+    websocket.onclose = function(e) {
       console.log("connection closed (" + e.code + ")");
     }
-    sock.onmessage = function(e) {
+    websocket.onmessage = function(e) {
       console.log("message received: " + e.data);
     }
 
