@@ -94,7 +94,7 @@ $(document).ready(function() {
   */
 
   function startUserMedia(stream) {
-    var mediaStreamSource = context.createMediaStreamSource(stream);
+    var mediaStreamSource = audio_context.createMediaStreamSource(stream);
   // Firefox hack https://support.mozilla.org/en-US/questions/984179
     window.firefox_audio_hack = input;
     recorder = new AudioRecorder(input, websocket, {}, callbackRecorder);
