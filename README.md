@@ -19,7 +19,7 @@ This repository contains the required submodules to stream audio from the browse
 
 ##Requirement
 
-###Pre-Installation
+###Installation
 
 ####Linux Packages
 
@@ -43,12 +43,10 @@ sudo apt-get install google-chrome-stable
 
 **Note:** This project assumes Ubuntu Server 14.04 as the operating system.
 
-####Packages
+###Configuration
 
 ####GIT
 
-####GIT Submodule
-
-###Installation
+#####GIT Submodule
 
 ##Execution
