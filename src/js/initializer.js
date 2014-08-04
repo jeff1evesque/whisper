@@ -133,7 +133,7 @@ $(document).ready(function() {
     websocket.onmessage = function(e) {
       console.log("message received: " + e.data);
       result = JSON.parse(e.data);
-      if (typeof(result.error) !== 'undefined) {
+      if (typeof(result.error) !== 'undefined') {
         $('.message').html('Error: ' + result.error);
       }
       else {
