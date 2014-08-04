@@ -132,18 +132,16 @@ $(document).ready(function() {
     }
     websocket.onmessage = function(e) {
       console.log("message received: " + e.data);
-
       try {
         result = JSON.parse(e.data);
+      } catch (e) {
         if (typeof(result.error) !== 'undefined') {
           $('.message').html('Error: ' + result.error);
         }
         else {
           $('.message').html('Welcome!');
         }
-      } catch (e) {
-        console.log('returning server data is not a JSON-formatted string');
-      }
+      }  // Closes try catch
     }
 
   }
