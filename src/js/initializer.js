@@ -31,14 +31,10 @@ $(document).ready(function() {
     if (recorder) {
       recorder.start();
     }
-    startDataStream();
   });
   $('.buttonStop').click(function() {
     if (recorder) {
       recorder.stop();
-    }
-    if (typeof(webworker_audio_stream) != 'undefined') {
-      endDataStream();
     }
   });
 
