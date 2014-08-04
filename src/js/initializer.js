@@ -2,12 +2,12 @@
  * initializer.js:
  */
 
-$(document).ready(function() {
-
-// Local Variables
+// Global Variables
   var webworker_stream_audio;
   var audio_context;
   var websocket_uri = 'ws://localhost:9001';
+
+$(document).ready(function() {
 
 // Initialize Media Stream (getUserMedia)
   initMediaStream();
@@ -32,6 +32,8 @@ $(document).ready(function() {
       endDataStream();
     }
   });
+
+});  // Closes $(document).ready(function() {}
 
  /**
   *  endDataStream(): terminates the WebWorker defined in 'startDataStream()'
@@ -185,5 +187,3 @@ $(document).ready(function() {
       $('.message').html('Error initializing getUserMedia: ' + e);
     });
   }
-
-});  // Closes $(document).ready(function() {}
