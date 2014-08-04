@@ -9,6 +9,7 @@
   var webworker_stream_audio;
   var websocket_uri = 'ws://localhost:9001';
   var webworker_path = '../../src/js/webworker_stream_audio.js';
+  var WEBWORKER_AUDIO_RECORDER = '../../src/js/audioRecorderWorker.js';
 
 $(document).ready(function() {
 
