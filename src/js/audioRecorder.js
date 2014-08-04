@@ -1,3 +1,23 @@
+/**
+ *  audioRecorder.js: defines various 'stream' configurations, and sends the data to
+ *                    the corresponding 'audioRecorderWorker' webworker.
+ *
+ *                    A WebWorker is an HTML5 feature that allows javascript to be
+ *                    run in the background independent of other scripts (threads),
+ *                    without affecting the performance of the page.  This portion
+ *                    is considered the 'WebWorker Constructor'.
+ *
+ *  @worker.onmessage is an event listener to the 'WebWorker'.  The 'event.data'
+ *                    'event.data' parameter is used to acquire data from the WebWorker.
+ *
+ *  @worker.postMessage('YOUR-DATA-HERE') sends data to the WebWorker.
+ *                    However, if no parameter is supplied, postMessage() simply starts
+ *                    the WebWorker.  The WebWorker receives data from this
+ *                    'WebWorker' Constructor by implementing the onmessage message:
+ *  
+ *                    onmessage = function(event) {console.log(event.data)}
+ */
+
 (function(window){
     var AudioRecorder = function(source, websocket, cfg, clb) {
 	this.websocket = websocket;
