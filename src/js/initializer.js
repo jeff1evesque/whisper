@@ -39,6 +39,25 @@ $(document).ready(function() {
 });  // Closes $(document).ready(function() {}
 
  /**
+  *  callbackRecorder(): callback function from the 'recorder' object defined
+  *                      within the 'startUserMedia()' function.  This function
+  *                      acquires the blob data from the server, and distributes
+  *                      it to the client side.
+  *
+  *  @x is an 'object literal' parameter defined where this callback is passed 
+  *                      into (audioRecorder.js).
+  */
+
+  function callbackRecorder(x) {
+    if (typeof(x.volume) !== 'undefined') {
+      document.getElementById("volume").innerHTML = Math.floor(x.volume);
+    }
+    if (typeof(x.volumeMax) !== 'undefined') {
+      document.getElementById("volumeMax").innerHTML = Math.floor(x.volumeMax);
+    }
+  }
+
+ /**
   *  endDataStream(): terminates the WebWorker defined in 'startDataStream()'
   */
 
