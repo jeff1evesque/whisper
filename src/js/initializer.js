@@ -145,6 +145,7 @@ $(document).ready(function() {
       console.log("connected to server");
       websocket.send("CONNECTED TO YOU");
 
+  // Re-assign websocket: not sure if 'recorder' will be ready before 'websocket'
       if (recorder) {
         recorder.websocket = websocket;
       }
