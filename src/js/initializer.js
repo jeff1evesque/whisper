@@ -64,14 +64,6 @@ $(document).ready(function() {
   }
 
  /**
-  *  endDataStream(): terminates the WebWorker defined in 'startDataStream()'
-  */
-
-  function endDataStream() {
-    webworker_audio_stream.terminate();
-  }
-  
- /**
   *  startUserMedia(): is the 'getUserMedia' callback, which gets executed upon
   *                    successfully connecting to a media device (camera, or microphone).
   *                    This function intializes the recorder by instantiating the
