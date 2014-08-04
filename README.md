@@ -7,9 +7,19 @@ This repository contains the required submodules to stream audio from the browse
 
 ###Definition
 
+*Streaming* media is [multimedia](http://www.answers.com/topic/multimedia) that is constantly received by and presented to an [end-user](http://en.wikipedia.org/wiki/End-user_(computer_science)) while being delivered by a provider.
+
+- http://en.wikipedia.org/wiki/Streaming_media
+
+**Note:** the end-user in context of streaming audio would be the Server hosting this application, and the provider would be the clients browser.
+
+*WebSocket* is a protocol providing [full-duplex](http://en.wikipedia.org/wiki/Full-duplex) communications channels over a single [TCP](http://en.wikipedia.org/wiki/Transmission_Control_Protocol) connection.  It is designed to be implemented in [web browsers](http://en.wikipedia.org/wiki/Web_browser) and [web servers](http://en.wikipedia.org/wiki/Web_server), but it can be used by any client or server application.
+
+- http://en.wikipedia.org/wiki/WebSocket
+
 ##Requirement
 
-###Pre-Installation
+###Installation
 
 ####Linux Packages
 
@@ -31,14 +41,12 @@ sudo apt-get update
 sudo apt-get install google-chrome-stable
 ```
 
-**Note:** This project assumes Ubuntu Server 14.04 as the operating system.
+**Note:** This project assumes [Ubuntu Server 14.04](http://www.ubuntu.com/download/server) as the operating system.
 
-####Packages
+###Configuration
 
 ####GIT
 
-####GIT Submodule
-
-###Installation
+#####GIT Submodule
 
 ##Execution
