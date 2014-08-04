@@ -28,9 +28,15 @@ $(document).ready(function() {
 
 // Send Random Byte
   $('.buttonStart').click(function() {
+    if (recorder) {
+      recorder.start();
+    }
     startDataStream();
   });
   $('.buttonStop').click(function() {
+    if (recorder) {
+      recorder.stop();
+    }
     if (typeof(webworker_audio_stream) != 'undefined') {
       endDataStream();
     }
