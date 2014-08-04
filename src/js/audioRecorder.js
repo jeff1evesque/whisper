@@ -1,6 +1,6 @@
 /**
  *  audioRecorder.js: defines various 'stream' configurations, and sends the data to
- *                    the corresponding 'audioRecorderWorker' webworker.
+ *                    the corresponding WebWorker defined in 'audioRecorderWorker.js'.
  *
  *                    A WebWorker is an HTML5 feature that allows javascript to be
  *                    run in the background independent of other scripts (threads),
