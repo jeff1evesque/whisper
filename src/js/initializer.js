@@ -6,6 +6,7 @@
   var webworker_stream_audio;
   var audio_context;
   var websocket_uri = 'ws://localhost:9001';
+  var webworker_path = '../../src/js/webworker_stream_audio.js';
 
 $(document).ready(function() {
 
@@ -65,8 +66,7 @@ $(document).ready(function() {
   function startDataStream() {
 
     if(typeof(Worker) !== 'undefined') {
-      var path = '../../src/js/webworker_stream_audio.js';
-      webworker_audio_stream = new Worker(path);
+      webworker_audio_stream = new Worker(webworker_path);
       webworker_audio_stream.onmessage = function(event) {
         console.log(event.data);
         return event.data;
