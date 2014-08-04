@@ -4,6 +4,7 @@
 
 // Global Variables
   var websocket = null;
+  var recorder = null;
   var audio_context;
   var webworker_stream_audio;
   var websocket_uri = 'ws://localhost:9001';
