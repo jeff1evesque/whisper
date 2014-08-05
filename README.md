@@ -3,8 +3,6 @@ Whisper
 
 This repository contains the required submodules to stream audio from the browser to the server.
 
-##Whisper
-
 ###Definition
 
 *Streaming* media is [multimedia](http://www.answers.com/topic/multimedia) that is constantly received by and presented to an [end-user](http://en.wikipedia.org/wiki/End-user_(computer_science)) while being delivered by a provider.
