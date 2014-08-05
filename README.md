@@ -21,7 +21,7 @@ This project utilizes the [*WebSocket Protocol*](https://developer.mozilla.org/e
 
 First, a WebSocket server needs to be defined.  Since, [*AutobahnPython*](https://github.com/tavendo/AutobahnPython) is being implemented in this project, the corresponding [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py) will need to utilize the respective [interfaces](https://github.com/tavendo/AutobahnPython/blob/master/autobahn/autobahn/websocket/interfaces.py).
 
-Once, the server has been created, client-side code needs to be defined.  This project chooses to use [*WebSocket Protocols*](https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications) within javascript.  Other means of client-side schemes are possible (i.e. [*AutobahnJS*](https://github.com/tavendo/AutobahnJS) -> [*WAMP Protocol*](http://wamp.ws/) instead of pure [*WebSockets*](https://developer.mozilla.org/en-US/docs/WebSockets)).  However, this may change the server-side implementation of this project.
+Once, the server has been created, client-side code needs to be defined.  This project chooses to use javascript [*WebSocket Protocols*](https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications).  Other client-side schemes are possible (i.e. [*AutobahnJS*](https://github.com/tavendo/AutobahnJS) -> [*WAMP Protocol*](http://wamp.ws/) instead of pure [*WebSockets*](https://developer.mozilla.org/en-US/docs/WebSockets)).  However, this may change the server-side implementation of this project.
 
 ##Installation
 
