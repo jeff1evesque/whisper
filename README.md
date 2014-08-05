@@ -17,11 +17,11 @@ This repository contains the required submodules to stream audio from the browse
 
 ###Overview
 
-This project utilizes the [*WebSocket Protocol*](https://developer.mozilla.org/en-US/docs/WebSockets).  For the WebSockets to be able to communicate from the browser to the server (and vice versa), some configurations need to be made at each end.
+This project utilizes the [*WebSocket Protocol*](https://developer.mozilla.org/en-US/docs/WebSockets).  Some configurations need to be made at each end, in order for WebSockets to be able to communicate from the browser to the server (and vice versa):
 
 First, a WebSocket server needs to be defined.  Since, [*AutobahnPython*](https://github.com/tavendo/AutobahnPython) is the chosen server-side implementation, the corresponding [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py) will need to utilize the respective [interfaces](https://github.com/tavendo/AutobahnPython/blob/master/autobahn/autobahn/websocket/interfaces.py).
 
-Once the server has been created, the client-side scheme needs to be defined.  This project chooses to use javascript [*WebSocket Protocols*](https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications).  Other client-side schemes are possible (i.e. [*AutobahnJS*](https://github.com/tavendo/AutobahnJS) -> [*WAMP Protocol*](http://wamp.ws/) instead of pure [*WebSockets*](https://developer.mozilla.org/en-US/docs/WebSockets)).  However, this may change the server-side implementation of this project.
+Once the server has been created, the client-side implementation needs to be defined.  This project chooses to use javascript [*WebSocket Protocols*](https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications).  However, other client-side schemes are possible.  For example, [*AutobahnJS*](https://github.com/tavendo/AutobahnJS).  This change would require the use of the [*WAMP Protocol*](http://wamp.ws/) (provided in AutobahnPython) instead of implementing pure [*WebSockets*](https://developer.mozilla.org/en-US/docs/WebSockets)).  Changes like these, will modify the server-side implementation of this project.
 
 ##Installation
 
