@@ -17,11 +17,9 @@ This repository contains the required submodules to stream audio from the browse
 
 - http://en.wikipedia.org/wiki/WebSocket
 
-##Requirement
+##Installation
 
-###Installation
-
-####Linux Packages
+###Linux Packages
 
 The following packages need to be installed through terminal in Ubuntu:
 
@@ -30,7 +28,7 @@ sudo apt-get install libappindicator1
 sudo apt-get install libindicator7
 ```
 
-####Google Chrome
+###Google Chrome
 
 This project requires testing the functionality of [`getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator.getUserMedia).  The [Google Chrome](https://www.google.com/intl/en_us/chrome/browser/) browser, ensures, and provides this functionality.
 
@@ -43,10 +41,10 @@ sudo apt-get install google-chrome-stable
 
 **Note:** This project assumes [Ubuntu Server 14.04](http://www.ubuntu.com/download/server) as the operating system.
 
-###Configuration
+##Configuration
 
-####GIT
+###GIT
 
-#####GIT Submodule
+####GIT Submodule
 
 ##Execution
