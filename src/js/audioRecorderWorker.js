@@ -24,22 +24,26 @@
     outSampleRate = 16000,
     inSampleRate;
 
-this.onmessage = function(e) {
-  switch(e.data.command) {
-    case 'init':
-      init(e.data.config);
-      break;
-    case 'record':
-      record(e.data.buffer);
-      break;
-    case 'clear':
-      clear();
-      break;
-    case 'getWave':
-      getWave();
-      break;
-  }
-};
+ /**
+  *  this.onmessage: receive data from 'WebWorker' Constructor
+  */
+
+  this.onmessage = function(e) {
+    switch(e.data.command) {
+      case 'init':
+        init(e.data.config);
+        break;
+      case 'record':
+        record(e.data.buffer);
+        break;
+      case 'clear':
+        clear();
+        break;
+      case 'getWave':
+        getWave();
+        break;
+    }
+  };
 
 function init(config) {
     inSampleRate = config.sampleRate;
