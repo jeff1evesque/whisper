@@ -50,34 +50,39 @@ function init(config) {
     outputBufferLength = config.outputBufferLength;
 }
 
-function record(inputBuffer) {
+ /**
+  *  record: sends recording buffer to the server, then 'slice' out the buffer
+  *          before the 'indexOut'
+  */
+
+  function record(inputBuffer) {
     var volumeMax = 0.0;
     var sample;
     for (var i = 0; i < inputBuffer[0].length; i++) {
-	sample = (inputBuffer[0][i] + inputBuffer[1][i]) / 2;
-	volumeMax = Math.max(volumeMax, sample, -sample);
-	recordingBuffer.push(sample * 32766);
+      sample = (inputBuffer[0][i] + inputBuffer[1][i]) / 2;
+      volumeMax = Math.max(volumeMax, sample, -sample);
+      recordingBuffer.push(sample * 32766);
     }
     this.postMessage({command: 'newVolume', data: (100.0*volumeMax)});
 
     while(recordingBuffer.length * outSampleRate / inSampleRate > outputBufferLength) {
-	var result = new Int16Array(outputBufferLength);
-	var bin = 0, num = 0, indexIn = 0, indexOut = 0;
-	while(indexIn < outputBufferLength) {
-	    bin = 0, num = 0;
-	    while(indexOut < Math.min(recordingBuffer.length, (indexIn + 1) * inSampleRate / outSampleRate)) {
-		bin += recordingBuffer[indexOut];
-		num += 1;
-		indexOut++;
-	    }
-	    recordingSamples.push(bin/num);
-	    result[indexIn] = bin/num;
-	    indexIn++;
-	}
-	this.postMessage({command: 'newBuffer', data: result});
-	recordingBuffer = recordingBuffer.slice(indexOut);
+      var result = new Int16Array(outputBufferLength);
+      var bin = 0, num = 0, indexIn = 0, indexOut = 0;
+      while(indexIn < outputBufferLength) {
+        bin = 0, num = 0;
+        while(indexOut < Math.min(recordingBuffer.length, (indexIn + 1) * inSampleRate / outSampleRate)) {
+          bin += recordingBuffer[indexOut];
+          num += 1;
+          indexOut++;
+        }
+        recordingSamples.push(bin/num);
+        result[indexIn] = bin/num;
+        indexIn++;
+      }
+      this.postMessage({command: 'newBuffer', data: result});
+      recordingBuffer = recordingBuffer.slice(indexOut);
     }
-}
+  }
 
 function clear() {
   recordingBuffer = [];
