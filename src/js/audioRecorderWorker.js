@@ -87,7 +87,7 @@ function clear() {
   *               first bit (Most Significant Bit, MSB) is not reserved for
   *               signing.
   *
-  *  @view is defined in the getWave() function where this function is called.
+  *  @view is defined in getWave(), where this function is called.
   */
 
   function writeString(view, offset, string) {
