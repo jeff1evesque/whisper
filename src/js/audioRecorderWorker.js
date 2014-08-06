@@ -80,11 +80,21 @@ function clear() {
   recordingSamples =[];
 }
 
-function writeString(view, offset, string) {
-  for (var i = 0; i < string.length; i++) {
-    view.setUint8(offset + i, string.charCodeAt(i));
+ /**
+  *  writeString: Stores 'string' as a 'Uint8' value at the specified byte
+  *               'offset'.  A Uint8 is an 8-bit unsigned integer (range is
+  *               0 through 255 decimal). Because a Uint8 is unsigned, its 
+  *               first bit (Most Significant Bit, MSB) is not reserved for
+  *               signing.
+  *
+  *  @view is defined in the getWave() function where this function is called.
+  */
+
+  function writeString(view, offset, string) {
+    for (var i = 0; i < string.length; i++) {
+      view.setUint8(offset + i, string.charCodeAt(i));
+    }
   }
-}
 
 function floatTo16BitPCM(output, offset, input){
   for (var i = 0; i < input.length; i++, offset+=2)
