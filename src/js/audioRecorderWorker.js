@@ -101,17 +101,6 @@ function clear() {
   *                   signed integer), at the specified byte 'offset'.
   *
   *  @output object is defined in getWave(), where this function is called.
-  *
-  *  @true is an optional parameter that causes the 'Int16' to be saved as a
-  *    "Little Endian" (defaults to 'false', "Big Endian").  The little endian
-  *    stores the least significant byte in the smallest address.  Consider
-  *    the four bytes: 90, AB, 12, CD (each byte requires 2 hex digits):
-  *
-  *      Address  Value
-  *         1000     CD
-  *         1001     12
-  *         1002     AB
-  *         1003     90
   */
 
   function floatTo16BitPCM(output, offset, input){
@@ -120,10 +109,63 @@ function clear() {
   }
 
  /**
-  *  getwave:
+  *  getwave: creates a 'DataView' object using an 'ArrayBuffer' as an
+  *           input parameter.  After the DataView object has been properly
+  *           configured, it is used as a parameter to create a 'Blob' object.
+  *           This blob object is then sent to the server-side using the
+  *           'postMessage' method.
+  *
+  *  @ArrayBuffer(length) represents a raw buffer of binary data.
+  *    ArrayBuffers cannot be read from or written directly, but can
+  *    be passed a typed array, or 'DataView Object' to interpret the raw
+  *    buffer as needed.
+  *
+  *      @length the size, in byte, the array buffer to create.
+  *
+  *  @DataView(buffer, byteOffset, byteLength) reads and writes the different
+  *    kinds of binary data to any location in the 'ArrayBuffer'.
+  *
+  *      @buffer the 'ArrayBuffer' that the DataView represents
+  *
+  *      @byteOffset (optional) specifies the offset in bytes from the start
+  *        of the buffer at which the DataView should begin.
+  *
+  *      @byteLength (optional) specifies the length (in bytes) of the section
+  *        of the buffer that the DataView should represent.
+  *
+  *  @Blob(parts, properties) represents a file-like object of immutable,
+  *    raw data.  Blobs represent data that isn't necessarily in a
+  *    javascript-native format.
+  *
+  *      @parts is an array of data objects to put into the new Blob object.
+  *        This can be any number of 'ArrayBuffer', 'ArrayBufferView' (typed
+  *        array), 'Blob', or strings, in any order.
+  *
+  *      @properties is an object that provides properties for the new Blob
+  *        object.
+  *
+  *  @view.setUintxx(byteOffset, value, littleEndian) store an 'Intxx' value
+  *    (xx bit signed integer), at the specified byte 'offset'.
+  *
+  *      @value the value to set
+  *
+  *      @byteOffset the place at which the value should be retrieved
+  *
+  *      @littleEndian an optional parameter, which defaults to false.  This
+  *        causes the data to be stored in 'BigEndian' format.  However, if
+  *        set to TRUE, the 'Intxx' value is saved as "Little Endian".  The
+  *        little endian stores the least significant byte in the smallest
+  *        address.  Consider the four bytes: 90, AB, 12, CD (each byte
+  *        requires 2 hex digits):
+  *
+  *          Address  Value
+  *             1000     CD
+  *             1001     12
+  *             1002     AB
+  *             1003     90
   */
 
-function getWave(){
+  function getWave(){
     var sampleWidth = 2;
     var buffer = new ArrayBuffer(44 + recordingSamples.length * sampleWidth);
     var view = new DataView(buffer);
@@ -144,5 +186,4 @@ function getWave(){
 
     var audioBlob = new Blob([view], { type: 'audio/wave' });
     this.postMessage({command: 'newWave', blob: audioBlob});
-};
-
+  };
