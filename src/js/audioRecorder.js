@@ -29,7 +29,7 @@
   var AudioRecorder = function(source, websocket, cfg, clb) {
     this.websocket = websocket;
 
-  // Assign 'noop' function / empty object if cfg, or clb is undefined
+  // No-operation function / empty object if cfg, or clb, is undefined, respectively
     var callback = clb || function () { };
     var config = cfg || {};
 
