@@ -84,10 +84,14 @@ function init(config) {
     }
   }
 
-function clear() {
-  recordingBuffer = [];
-  recordingSamples =[];
-}
+ /**
+  *  clear: clears the 'recordingBuffer', and 'recordingSamples' arrays.
+  */
+
+  function clear() {
+    recordingBuffer = [];
+    recordingSamples = [];
+  }
 
  /**
   *  writeString: uses setInt16() to store an 'Uint8' value at the specified
