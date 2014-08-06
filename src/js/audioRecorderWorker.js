@@ -81,13 +81,13 @@ function clear() {
 }
 
  /**
-  *  writeString: Stores 'string' as a 'Uint8' value at the specified byte
-  *               'offset'.  A Uint8 is an 8-bit unsigned integer (range is
-  *               0 through 255 decimal). Because a Uint8 is unsigned, its 
+  *  writeString: uses setInt16() to store an 'Uint8' value at the specified
+  *               byte 'offset'.  A Uint8 is an 8-bit unsigned integer (range
+  *               is 0 through 255 decimal). Because a Uint8 is unsigned, its 
   *               first bit (Most Significant Bit, MSB) is not reserved for
   *               signing.
   *
-  *  @view is defined in getWave(), where this function is called.
+  *  @view object is defined in getWave(), where this function is called.
   */
 
   function writeString(view, offset, string) {
@@ -99,6 +99,8 @@ function clear() {
  /**
   *  floatTo16BitPCM: uses setInt16() to store an 'Int16' value (16 bit
   *                   signed integer), at the specified byte 'offset'.
+  *
+  *  @output object is defined in getWave(), where this function is called.
   *
   *  @true is an optional parameter that causes the 'Int16' to be saved as a
   *    "Little Endian" (defaults to 'false', "Big Endian").  The little endian
@@ -116,6 +118,10 @@ function clear() {
     for (var i = 0; i < input.length; i++, offset+=2)
       output.setInt16(offset, input[i], true);
   }
+
+ /**
+  *  getwave:
+  */
 
 function getWave(){
     var sampleWidth = 2;
