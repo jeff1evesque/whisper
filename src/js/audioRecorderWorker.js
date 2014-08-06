@@ -45,10 +45,14 @@
     }
   };
 
-function init(config) {
+ /**
+  *  init: initializes 'inSampleRate', and 'outputBufferLength' variables
+  */
+
+  function init(config) {
     inSampleRate = config.sampleRate;
     outputBufferLength = config.outputBufferLength;
-}
+  }
 
  /**
   *  record: sends recording buffer to the server, then 'slice' out the buffer
