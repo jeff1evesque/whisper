@@ -96,10 +96,26 @@ function clear() {
     }
   }
 
-function floatTo16BitPCM(output, offset, input){
-  for (var i = 0; i < input.length; i++, offset+=2)
+ /**
+  *  floatTo16BitPCM: uses setInt16() to store an 'Int16' value (16 bit
+  *                   signed integer), at the specified byte 'offset'.
+  *
+  *  @true is an optional parameter that causes the 'Int16' to be saved as a
+  *    "Little Endian" (defaults to 'false', "Big Endian").  The little endian
+  *    stores the least significant byte in the smallest address.  Consider
+  *    the four bytes: 90, AB, 12, CD (each byte requires 2 hex digits):
+  *
+  *      Address  Value
+  *         1000     CD
+  *         1001     12
+  *         1002     AB
+  *         1003     90
+  */
+
+  function floatTo16BitPCM(output, offset, input){
+    for (var i = 0; i < input.length; i++, offset+=2)
       output.setInt16(offset, input[i], true);
-}
+  }
 
 function getWave(){
     var sampleWidth = 2;
