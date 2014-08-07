@@ -27,7 +27,8 @@
  *
  *  @this.context.createScriptProcessor(bufferSize, inputChannels, outputChannels) is a method
  *    of the 'AudioContext' interface, and creates a 'ScriptProcessorNode' used for direct
- *    audio processing.
+ *    audio processing.  It is an AudioNode audio-processing module that is linked to two
+ *    buffers, one containing the current input, one containing the output.
  *
  *    @bufferSize buffer size in units of sample-frames.  If specified, the bufferSize must be
  *      one of the following: 256, 512, 102, 2048, 4096, 8192, 16384.  If it's not passed in,
@@ -38,8 +39,8 @@
  *      be necessary to avoid audio breakup and glitches.
  *
  *      A 'sample' is a single float32 value that represents the value of the audio stream at
- *      each specific point in time, in a specific channel.A 'sample-frame' is the set of all
- *      values for all channels that will play at a each specific point in time: all the
+ *      each specific point in time, in a specific channel.  A 'sample-frame' is the set of
+ *      all values for all channels that will play at a each specific point in time: all the
  *      'samples' of all the channels that play at the same time (one for mono, two for a
  *      stereo sound, etc.).
  *
@@ -55,6 +56,13 @@
  *  @this.context.sampleRate is a property of the AudioContext interface, which returns a
  *    floating point number representing the 'sample rate', in 'samples' per second, used by
  *    all nodes in this audio context.
+ *
+ *  @this.node.onaudioprocess an event listener of type 'AudioProcessingEvent' is called for
+ *    audio processing each time the input buffer contains new data, and the event listener
+ *    terminates when it has filled the output buffer with data.  The frequency of this event
+ *    being called is determined by the 'bufferSize' parameter when declaring
+ *    'AudioContext.createScriptProcessor(bufferSize inputChannels, outputChannels), see
+ *    above.
  */
 
 (function(window){
