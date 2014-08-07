@@ -47,11 +47,15 @@
  *      A 'sample rate' is the number of 'sample frames' per second, used by all nodes in this
  *      audio context.
  *
- *    @inputChannels (optional) defaults to 2, and determines the number of channels for this
- *      node's input.
+ *    @inputChannels (optional) defaults to 2 (stereo), determines the number of channels for
+ *      this node's input.
  *
- *    @outputChannels (optional) defaults to 2, and determines the number of channels for this
- *      nodes output.
+ *    @outputChannels (optional) defaults to 2 (stereo), determines the number of channels for
+ *      this nodes output.
+ *
+ *    Note: Sphinx translation engines use 1 channel (mono).  If this application is being used
+ *          for such a task, it is wise to use 1 channel, rather than performing additional
+ *          computing to convert audio after audio has been streamed.
  *
  *  @this.context.sampleRate is a property of the AudioContext interface, which returns a
  *    floating point number representing the 'sample rate', in 'samples' per second, used by
@@ -103,6 +107,7 @@
         worker.postMessage({
           command: 'record',
           buffer: [
+    // Buffer data from input channels
             e.inputBuffer.getChannelData(0),
             e.inputBuffer.getChannelData(1)
           ]
