@@ -51,6 +51,10 @@
  *
  *    @outputChannels (optional) defaults to 2, and determines the number of channels for this
  *      nodes output.
+ *
+ *  @this.context.sampleRate is a property of the AudioContext interface, which returns a
+ *    floating point number representing the 'sample rate', in 'samples' per second, used by
+ *    all nodes in this audio context.
  */
 
 (function(window){
