@@ -63,6 +63,12 @@
  *    being called is determined by the 'bufferSize' parameter when declaring
  *    'AudioContext.createScriptProcessor(bufferSize inputChannels, outputChannels), see
  *    above.
+ *
+ *    The event listener processes audio from the input by accessing the audio data from the
+ *    'inputBuffer' attribute.  The audio data which is the result of the processing, is then
+ *    placed into the 'outputBuffer'.  It will have a number of channels equal to the
+ *    'inputChannels' parameter of the createScriptProcessor() method.
+ *
  */
 
 (function(window){
@@ -70,7 +76,7 @@
     this.websocket = websocket;
 
   // Eliminate Undefined Errors
-    var callback = clb || function () { };
+    var callback = clb || function (x) { };
     var config = cfg || {}
 
     var inputBufferLength = config.bufferLen || 4096;
