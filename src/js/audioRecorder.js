@@ -27,6 +27,34 @@
  *      @websocket a defined websocket object
  *      @cfg audio recorder configurations
  *      @clb audio recorder callback
+ *
+ *      @this.context.createScriptProcessor(bufferSize, inputChannels, outputChannels) is a
+ *        method of the 'AudioContext' interface, and creates a 'ScriptProcessorNode' used for
+ *        direct audio processing.
+ *
+ *          @bufferSize buffer size in units of sample-frames.  If specified, the bufferSize
+ *            must be one of the following: 256, 512, 102, 2048, 4096, 8192, 16384.  If it's
+ *            not passed in, or if the value is 0, then the implementation will choose the
+ *            best buffer size for the given environment (recommended).  This value controls
+ *            how frequently the onaudioprocess event handler is called and how many
+ *            sample-frames need to be processed for each call.  Lower values for bufferSize
+ *            will result in a lower (better) latency. Higher values will be necessary to
+ *            avoid audio breakup and glitches.
+ *
+ *            A 'sample' is a single float32 value that represents the value of the audio
+ *            stream at each specific point in time, in a specific channel.A 'sample-frame' is
+ *            the set of all values for all channels that will play at a each specific point
+ *            in time: all the 'samples' of all the channels that play at the same time (one
+ *            for mono, two for a stereo sound, etc.).
+ *
+ *            A 'sample rate' is the number of 'sample frames' per second, used by all nodes
+ *            in this audio context.
+ *
+ *          @inputChannels (optional) defaults to 2, and determines the number of channels
+ *            for this node's input.
+ *
+ *          @outputChannels (optional) defaults to 2, and determines the number of channels
+ *            for this nodes output.
  */
 
 (function(window){
