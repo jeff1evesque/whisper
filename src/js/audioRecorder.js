@@ -121,14 +121,14 @@
     this.stop = function() {
       recording = false;
       this.websocket.send("stop");
-        if (receivedData) {
-          callback({volumeMax: volumeMax});
-        }
-        worker.postMessage({ command: 'getWave' });
-        worker.postMessage({ command: 'clear' });
-      };
+      if (receivedData) {
+        callback({volumeMax: volumeMax});
+      }
+      worker.postMessage({ command: 'getWave' });
+      worker.postMessage({ command: 'clear' });
+    };
 
-      this.cancel = function() {
+    this.cancel = function() {
       recording = false;
       this.websocket.send("cancel");
       worker.postMessage({ command: 'clear' });
