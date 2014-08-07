@@ -74,8 +74,7 @@ $(document).ready(function() {
   *    rendering audio to the audio hardware.  AudioNodes are the building blocks of an
   *    'AudioContext', and an AudioContext are a set of AudioNode objects and their
   *    connections.  An AudioContext allows for arbitrary routing of signals to the
-  *    'AudioDestinationNode'.  To build the earlier MediaStreamAudioSourceNode object, it
-  *    requires the global 'stream' object.
+  *    'AudioDestinationNode'.
   *
   *  @stream is a global object determined by 'navigator.getUserMedia()'.
   */
