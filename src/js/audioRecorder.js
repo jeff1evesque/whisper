@@ -30,8 +30,8 @@
  *    audio processing.  It is an AudioNode audio-processing module that is linked to two
  *    buffers, one containing the current input, one containing the output.
  *
- *    @bufferSize buffer size in units of sample-frames.  If specified, the bufferSize must be
- *      one of the following: 256, 512, 102, 2048, 4096, 8192, 16384.  If it's not passed in,
+ *    @bufferSize buffer size in units of 'sample-frames'.  If specified, the bufferSize must
+ *      be one of the following: 256, 512, 102, 2048, 4096, 8192, 16384.  If it's not passed in,
  *      or if the value is 0, then the implementation will choose the best buffer size for the
  *      given environment (recommended).  This value controls how frequently the onaudioprocess
  *      event handler is called and how many sample-frames need to be processed for each call.
@@ -162,7 +162,7 @@
 
   };
 
+// AudioRecorder: allow function within 'IIFE' to have Global Scope
   window.AudioRecorder = AudioRecorder;
 
 })(window);
-
