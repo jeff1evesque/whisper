@@ -19,7 +19,11 @@
  *
  *  @AudioRecorder(source, websocket, cfg, clb)
  *
- *      @source a 'MediaStreamAudioSourceNode' object
+ *      @source a 'MediaStreamAudioSourceNode' object passed in from the instatiation of
+ *        AudioRecorder within 'initializer.js'.  The 'MediaStreamAudioSourceNode' object is
+ *        an AudioNode that acts as an 'audio source', it inherits the 'AudioNode.context'
+ *        property.
+ *
  *      @websocket a defined websocket object
  *      @cfg audio recorder configurations
  *      @clb audio recorder callback
@@ -31,13 +35,15 @@
 
   // No-operation function / empty object if cfg, or clb, is undefined, respectively
     var callback = clb || function () { };
-    var config = cfg || {};
+    var config = cfg || {}
 
     var inputBufferLength = config.bufferLen || 4096;
     var outputBufferLength = config.outputBufferLength || 4000;
+
     var recording = false;
     var volumeMax = -1;
     var receivedData = false;
+
     this.context = source.context;
     this.node = this.context.createScriptProcessor(inputBufferLength, 2, 2);
     var worker = new Worker(config.worker || WEBWORKER_AUDIO_RECORDER);
