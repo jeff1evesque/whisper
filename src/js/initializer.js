@@ -65,9 +65,16 @@ $(document).ready(function() {
   *                    This function intializes the recorder by instantiating the
   *                    AudioRecorder() object, defined within 'audioRecorder.js'. 
   *
-  *  @createMediaStreamSource(stream) creates an 'AudioNode' from the 'stream' object.
+  *  @createMediaStreamSource(stream) creates a MediaStreamAudioSourceNode object, which is an
+  *    AudioNode that acts as an 'audio source'.  An AudioNode represents audio sources, the
+  *    audio destination, and intermediate processing modules, connected together to form the
+  *    AudioContext for rendering audio to the audio hardware.  AudioNodes are the building
+  *    blocks of an 'AudioContext', and an AudioContext are a set of AudioNode objects and
+  *    their connections.  An AudioContext allows for arbitrary routing of signals to the
+  *    'AudioDestinationNode'.  To build the earlier MediaStreamAudioSourceNode object, it
+  *    requires the global 'stream' object.
   *
-  *  @stream is a global variable determined by 'navigator.getUserMedia()'.
+  *  @stream is a global object determined by 'navigator.getUserMedia()'.
   */
 
   function startUserMedia(stream) {
