@@ -51,6 +51,20 @@ sudo apt-get install google-chrome-stable
 
 ###GIT
 
+Fork this project in your GitHub account, then clone your repository:
+
+```
+cd /var/www/html/
+sudo git clone https://[YOUR-USERNAME]@github.com/[YOUR-USERNAME]/whisper.git whisper
+```
+
+Then, add the *Remote Upstream*, this way we can pull any merged pull-requests:
+
+```
+cd /var/www/html/whisper/
+git remote add upstream https://github.com/[YOUR-USERNAME]/whisper.git
+```
+
 ####GIT Submodule
 
 ##Execution
