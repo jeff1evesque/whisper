@@ -15,7 +15,7 @@
  *                    The WebWorker receives data from this 'WebWorker Constructor' by
  *                    implementing the onmessage message:
  *  
- *                    onmessage = function(event) {console.log(event.data)}
+ *                    this.onmessage = function(event) { console.log(event.data) }
  *
  *  @source a 'MediaStreamAudioSourceNode' object passed in from the instatiation of an
  *    AudioRecorder within 'initializer.js'.  The 'MediaStreamAudioSourceNode' object is
