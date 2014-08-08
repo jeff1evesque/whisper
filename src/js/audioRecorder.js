@@ -72,8 +72,9 @@
  *    'inputBuffer' attribute.  The audio data which is the result of the processing, is then
  *    placed into the 'outputBuffer'.  It will have a number of channels equal to the
  *    'inputChannels' parameter of the createScriptProcessor() method.
- *
  */
+
+// Immediately Invoked Function Expression (IIFE)
 
 (function(window){
   var AudioRecorder = function(source, websocket, cfg, clb) {
