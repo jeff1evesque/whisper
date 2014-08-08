@@ -1,22 +1,19 @@
 /**
- *  audioRecorderWorker.js: is a 'WebWorker' for the 'WebWorker Constructor' the declared
- *                          in 'audioRecorder.js'.
+ *  audioRecorderWorker.js: is a 'WebWorker' for the 'WebWorker Constructor' the declared in
+ *                          'audioRecorder.js'.
  *
- *                          A WebWorker is an HTML5 feature that allows javascript to be
- *                          run in the background independent of other scripts (threads),
- *                          without affecting the performance of the page.  This portion
- *                          is considered the 'Worker'.
+ *                          A WebWorker is an HTML5 feature that allows javascript to be run in the
+ *                          background independent of other scripts (threads), without affecting
+ *                          the performance of the page.  This portion is considered the 'Worker'.
  *
- *  @onmessage is an event listener to the 'WebWorker Constructor'.  The 'event.data'
- *                          parameter is used to acquire data from the 'WebWorker
- *                          Constructor'.
+ *  @onmessage is an event listener to the 'WebWorker Constructor'.  The 'event.data' parameter is
+ *                          used to acquire data from the 'WebWorker Constructor'.
  *
- *  @postMessage('YOUR-DATA-HERE') sends data to the 'WebWorker Constructor', and must be
- *                          defined in the 'onmessage' function. The 'WebWorker 
- *                          Constructor' can receive data from this script by implementing
- *                          the following:
+ *  @postMessage('YOUR-DATA-HERE') sends data to the 'WebWorker Constructor', and must be defined
+ *                          in the 'onmessage' function. The 'WebWorker  Constructor' can receive
+ *                          data from this script by implementing the following:
  *
- *    [constructor].onmessage = function(event) { console.log(event.data) }
+ *                          [worker].onmessage = function(event) { console.log(event.data) }
  */
 
     var recordingBuffer = [],
@@ -25,7 +22,7 @@
     inSampleRate;
 
  /**
-  *  this.onmessage: receive data from 'WebWorker' Constructor
+  *  this.onmessage: receive data from 'WebWorker Constructor'
   */
 
   this.onmessage = function(e) {
@@ -46,7 +43,7 @@
   };
 
  /**
-  *  init: initializes 'inSampleRate', and 'outputBufferLength' variables
+  *  init: initializes 'inSampleRate', and 'outputBufferLength' from 'WebWorker Constructor'
   */
 
   function init(config) {
@@ -55,8 +52,9 @@
   }
 
  /**
-  *  record: sends recording buffer to the server, then 'slice' out the buffer
-  *          before the 'indexOut'
+  *  record: computes the max-volume for the current 'sample-frame', returns the current audio
+  *          'sample-frame' to the 'WebWorker Constructor' using the 'postMessage' method, and
+  *          'slices' out the buffer before the 'indexOut'.
   */
 
   function record(inputBuffer) {
@@ -129,8 +127,8 @@
   *  getwave: creates a 'DataView' object using an 'ArrayBuffer' as an
   *           input parameter.  After the DataView object has been properly
   *           configured, it is used as a parameter to create a 'Blob' object.
-  *           This blob object is then sent to the server-side using the
-  *           'postMessage' method.
+  *           This blob object is then sent to the 'WebWorker Constructor'
+  *           through the 'postMessage' method.
   *
   *  @ArrayBuffer(length) represents a raw buffer of binary data.
   *    ArrayBuffers cannot be read from or written directly, but can
@@ -182,7 +180,7 @@
   *             1003     90
   */
 
-  function getWave(){
+  function getWave() {
     var sampleWidth = 2;
     var buffer = new ArrayBuffer(44 + recordingSamples.length * sampleWidth);
     var view = new DataView(buffer);
