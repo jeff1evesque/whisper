@@ -57,6 +57,9 @@ $(document).ready(function() {
     if (typeof(x.volumeMax) !== 'undefined') {
       document.getElementById("volumeMax").innerHTML = Math.floor(x.volumeMax);
     }
+    if (typeof(x.audio) !== 'undefined') {
+      document.getElementById("audioPlayer").src = x.audio;
+    }
   }
 
  /**
