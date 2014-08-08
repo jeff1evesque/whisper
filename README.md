@@ -101,11 +101,11 @@ sudo chown -R jeffrey:sudo whisper
 
 **Note:** change 'jeffrey' to the user account YOU use.
 
-##Execution
+##WebSocket Execution
 
-###Start WebSocket Server
+###Start Server
 
-In order for the browser to be able to connect to the [AutobahnPython](https://github.com/tavendo/AutobahnPython) webserver, [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py) needs to be executed:
+In order for the browser to be able to connect to the [AutobahnPython](https://github.com/tavendo/AutobahnPython) Webserver, [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py) needs to be executed:
 
 ```
 cd /var/www/html/whisper/websocket/
@@ -114,7 +114,7 @@ python server.py
 
 This will *dedicate* the terminal window specifically to the server, and unresponsive to other commands.
 
-###Stop WebSocket Server
+###Stop Server
 
 The *WebSocket Server* can be *stopped* within the *dedicated* terminal console by pressing `ctrl-c`.
 
