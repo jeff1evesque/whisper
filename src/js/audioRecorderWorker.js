@@ -129,8 +129,8 @@
   *  getwave: creates a 'DataView' object using an 'ArrayBuffer' as an
   *           input parameter.  After the DataView object has been properly
   *           configured, it is used as a parameter to create a 'Blob' object.
-  *           This blob object is then sent to the server-side using the
-  *           'postMessage' method.
+  *           This blob object is then sent to the 'WebWorker Constructor'
+  *           through the 'postMessage' method.
   *
   *  @ArrayBuffer(length) represents a raw buffer of binary data.
   *    ArrayBuffers cannot be read from or written directly, but can
@@ -182,7 +182,7 @@
   *             1003     90
   */
 
-  function getWave(){
+  function getWave() {
     var sampleWidth = 2;
     var buffer = new ArrayBuffer(44 + recordingSamples.length * sampleWidth);
     var view = new DataView(buffer);
