@@ -102,3 +102,35 @@ sudo chown -R jeffrey:sudo whisper
 **Note:** change 'jeffrey' to the user account YOU use.
 
 ##Execution
+
+###Starting WebSocket Connection
+
+In order for the browser to be able to connect to the [AutobahnPython](https://github.com/tavendo/AutobahnPython) webserver, [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py) needs to be executed:
+
+```
+cd /var/www/html/whisper/websocket/
+python server.py
+```
+
+This will dedicate the terminal window specifically to the server, and unresponsive to other commands.
+
+###Server Echo
+
+Periodically, *print* statements within the *dedicated terminal* will display the status of certain actions.  For example, when a [*websocket connection*](https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications) is started:
+
+```
+sending echo: CONNECTED TO YOU
+sending echo: start
+```
+
+Likewise, when the *websocket connection* is stopped:
+
+```
+sending echo: stop
+```
+
+Other *print* statements may appear in the *dedicated* terminal console, and will vary accordingly. 
+
+###Stopping WebSocket Connection
+
+The WebSocket connection can be *stopped* within the *dedicated* terminal console by pressing `ctrl-c`.
