@@ -129,10 +129,11 @@ $(document).ready(function() {
     websocket = new WebSocket(websocket_uri);
     console.log("Websocket created...");
 
-  // WebSocket Definitions: executed when triggered
+  // WebSocket Definitions: executed when triggered webSocketStatus
     websocket.onopen = function() {
       console.log("connected to server");
       websocket.send("CONNECTED TO YOU");
+      document.getElementById("webSocketStatus").innerHTML = 'Connected';
 
   // Re-assign websocket: not sure if 'recorder' will be ready before 'websocket'
       if (recorder) {
@@ -141,6 +142,7 @@ $(document).ready(function() {
     }
     websocket.onclose = function(e) {
       console.log("connection closed (" + e.code + ")");
+      document.getElementById("webSocketStatus").innerHTML = 'Not Connected';
     }
     websocket.onmessage = function(e) {
       console.log("message received: " + e.data);
