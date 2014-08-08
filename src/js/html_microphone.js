@@ -25,7 +25,6 @@ $(document).ready(function() {
     obj_mic['div_error']       = 'Error: <div id="error"></div>';
     obj_mic['div_audio']       = '<div>Audio:</div>';
     obj_mic['audio_controls']  = '<audio controls="controls" src="" id="audioPlayer">Audio tag not supported in your web browser</audio>';
-    obj_mic['a_download']      = '<a href="" download="recordedAudio.wav" id="audioDownloadLink">Download link</a>';
   }
 // HTML Structure: flash
   else {
