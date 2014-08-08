@@ -112,7 +112,7 @@ cd /var/www/html/whisper/websocket/
 python server.py
 ```
 
-This will *dedicate* the terminal window specifically to the server, and unresponsive to other commands.
+This will *dedicate* the terminal window tab specifically to the server, and unresponsive to other commands.
 
 ###Stop Server
 
@@ -120,7 +120,7 @@ The *WebSocket Server* can be *stopped* within the *dedicated* terminal console 
 
 ###Server Echo
 
-Periodically, *print* statements within the *dedicated terminal* will display the status of certain actions.  For example, when a [*WebSocket Server*](http://www.html5rocks.com/en/tutorials/websockets/basics/) is started:
+Periodically, *print* statements within the *dedicated terminal* will display the status of certain actions.  For example, when a [*WebSocket Server*](http://www.html5rocks.com/en/tutorials/websockets/basics/) is connected, then started:
 
 ```
 sending echo: CONNECTED TO YOU
