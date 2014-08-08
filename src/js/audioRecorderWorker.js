@@ -55,8 +55,9 @@
   }
 
  /**
-  *  record: sends recording buffer to the server, then 'slice' out the buffer
-  *          before the 'indexOut'
+  *  record: computes the max-volume for the current 'sample-frame', returns the current audio
+  *          'sample-frame' to the 'WebWorker Constructor' using the 'postMessage' method, and
+  *          'slices' out the buffer before the 'indexOut'.
   */
 
   function record(inputBuffer) {
