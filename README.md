@@ -103,14 +103,14 @@ sudo chown -R jeffrey:sudo whisper
 
 ###Twisted
 
-AutobahnPython [requires](http://autobahn.ws/python/installation.html#requirements) a networking framework, which must be either [Twisted](https://github.com/twisted/twisted), or the [asyncio](https://docs.python.org/3.4/library/asyncio.html) networking framework.  This project implements the *Twisted* framework:
+AutobahnPython [requires](http://autobahn.ws/python/installation.html#requirements) a networking framework, which must be either [Twisted](https://github.com/twisted/twisted), or [asyncio](https://docs.python.org/3.4/library/asyncio.html).  This project implements the *Twisted* framework:
 
 ```
 cd /var/www/html/whisper/twisted
 sudo python setup.py install
 ```
 
-**Note:** Generally, *Twisted* is the framework of choice if the environment only provides python 2.x (will [support](http://twistedmatrix.com/trac/milestone/Python-3.x) python 3.x), whereas *asyncio* is generally preferred if the environment is python 3.x (included in python 3.4+).
+**Note:** Generally, *Twisted* is the framework of choice if the environment only provides python 2.x (will [support](http://twistedmatrix.com/trac/milestone/Python-3.x) python 3.x).  Whereas, *asyncio* is generally preferred if the environment is python 3.x (included in python 3.4+).
 
 ##WebSocket Execution
 
