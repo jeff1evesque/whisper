@@ -57,6 +57,9 @@ $(document).ready(function() {
     if (typeof(x.volumeMax) !== 'undefined') {
       document.getElementById("volumeMax").innerHTML = Math.floor(x.volumeMax);
     }
+    if (typeof(x.audio) !== 'undefined') {
+      document.getElementById("audioPlayer").src = x.audio;
+    }
   }
 
  /**
@@ -65,9 +68,18 @@ $(document).ready(function() {
   *                    This function intializes the recorder by instantiating the
   *                    AudioRecorder() object, defined within 'audioRecorder.js'. 
   *
-  *  @createMediaStreamSource(stream) creates an 'AudioNode' from the 'stream' object.
+  *  @createMediaStreamSource(stream) creates a MediaStreamAudioSourceNode object, which is an
+  *    AudioNode that acts as an 'audio source'.  To build such an object, the global 'stream'
+  *    object needs to be passed in as a parameter.
   *
-  *  @stream is a global variable determined by 'navigator.getUserMedia()'.
+  *    In general, an AudioNode represents audio sources, the audio destination, and
+  *    intermediate processing modules, connected together to form the AudioContext for
+  *    rendering audio to the audio hardware.  AudioNodes are the building blocks of an
+  *    'AudioContext', and an AudioContext are a set of AudioNode objects and their
+  *    connections.  An AudioContext allows for arbitrary routing of signals to the
+  *    'AudioDestinationNode'.
+  *
+  *  @stream is a global object determined by 'navigator.getUserMedia()'.
   */
 
   function startUserMedia(stream) {
@@ -117,10 +129,11 @@ $(document).ready(function() {
     websocket = new WebSocket(websocket_uri);
     console.log("Websocket created...");
 
-  // WebSocket Definitions: executed when triggered
+  // WebSocket Definitions: executed when triggered webSocketStatus
     websocket.onopen = function() {
       console.log("connected to server");
       websocket.send("CONNECTED TO YOU");
+      document.getElementById("webSocketStatus").innerHTML = 'Connected';
 
   // Re-assign websocket: not sure if 'recorder' will be ready before 'websocket'
       if (recorder) {
@@ -129,19 +142,23 @@ $(document).ready(function() {
     }
     websocket.onclose = function(e) {
       console.log("connection closed (" + e.code + ")");
+      document.getElementById("webSocketStatus").innerHTML = 'Not Connected';
     }
     websocket.onmessage = function(e) {
       console.log("message received: " + e.data);
+
       try {
         result = JSON.parse(e.data);
-      } catch (e) {
-        if (typeof(result.error) !== 'undefined') {
-          $('.message').html('Error: ' + result.error);
-        }
-        else {
-          $('.message').html('Welcome!');
-        }
-      }  // Closes try catch
+      }  catch (e) {
+        $('.message').html('Error retrieving data: ' + e);
+      }
+
+      if (typeof(result) !== 'undefined' && typeof(result.error) !== 'undefined') {
+        $('.message').html('Error: ' + result.error);
+      }
+      else {
+        $('.message').html('Welcome!');
+      }
     }
 
   }
