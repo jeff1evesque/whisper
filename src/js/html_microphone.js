@@ -18,10 +18,9 @@ $(document).ready(function() {
     obj_mic['button_start']    = '<button class="buttonStart">Start</button>';
     obj_mic['button_stop']     = '<button class="buttonStop">Stop</button>';
     obj_mic['br']              = '<br/>';
-    obj_mic['div_status']      = 'WebSocket: <div id="webSocketStatus">Not Connected</div>';
-    obj_mic['div_volume']      = 'Volume: <div id="volume"></div>';
-    obj_mic['div_volume_max']  = 'Volume Max: <div id="volumeMax"></div>';
-    obj_mic['div_audio']       = '<div>Audio:</div>';
+    obj_mic['div_status']      = '<div>WebSocket: <span id="webSocketStatus">Not Connected</span></div>';
+    obj_mic['div_volume']      = '<div>Volume: <span id="volume"></span></div>';
+    obj_mic['div_volume_max']  = '<div>Volume Max: <span id="volumeMax"></span></div>';
     obj_mic['audio_controls']  = '<audio controls="controls" src="" id="audioPlayer">Audio tag not supported in your web browser</audio>';
   }
 // HTML Structure: flash
