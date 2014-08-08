@@ -25,7 +25,7 @@
     inSampleRate;
 
  /**
-  *  this.onmessage: receive data from 'WebWorker' Constructor
+  *  this.onmessage: receive data from 'WebWorker Constructor'
   */
 
   this.onmessage = function(e) {
@@ -46,7 +46,7 @@
   };
 
  /**
-  *  init: initializes 'inSampleRate', and 'outputBufferLength' variables
+  *  init: initializes 'inSampleRate', and 'outputBufferLength' from 'WebWorker Constructor'
   */
 
   function init(config) {
