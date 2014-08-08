@@ -72,6 +72,12 @@
  *    'inputBuffer' attribute.  The audio data which is the result of the processing, is then
  *    placed into the 'outputBuffer'.  It will have a number of channels equal to the
  *    'inputChannels' parameter of the createScriptProcessor() method.
+ *
+ *  @URL.createObjectURL(blob) creates a URL for the specified object.  The URL lifetime
+ *    is tied to the 'document' in the window on which it was created (until browser tab / window
+ *    is closed).  The new object URL represents the specified File object or Blob object.
+ *
+ *      @blob is a File object or a Blob object to create a object URL for
  */
 
 // Immediately Invoked Function Expression (IIFE)
