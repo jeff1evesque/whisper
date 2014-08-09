@@ -107,6 +107,20 @@ sudo chown -R jeffrey:sudo whisper
 
 **Note:** change 'jeffrey' to the user account YOU use.
 
+###AutobahnPython
+
+Provides an open-source, real-time framework implementation for the following protocols:
+
+- The [WebSocket Protocol](http://tools.ietf.org/html/rfc6455)
+- The [Web Application Messaging Protocol](http://wamp.ws/) (WAMP)
+
+Either protocols, excel at [pushing data](http://autobahn.ws/python/#what-can-i-do-with-this-stuff) asynchronously between the client, and server in real-time.  In order to use the [*AutobahnPython*](https://github.com/tavendo/AutobahnPython) framework, it must first be installed:
+
+```
+cd /var/www/html/whisper/AutobahnPython/autobahn/
+sudo python setup.py install
+```
+
 ###Twisted
 
 AutobahnPython [requires](http://autobahn.ws/python/installation.html#requirements) a networking framework, which must be either [Twisted](https://github.com/twisted/twisted), or [asyncio](https://docs.python.org/3.4/library/asyncio.html).  This project implements the *Twisted* framework:
