@@ -23,6 +23,12 @@ First, a WebSocket server needs to be defined.  Since [*AutobahnPython*](https:/
 
 Once the server has been created, the client-side implementation needs to be defined.  This project chooses to use the javascript [*WebSocket Protocols*](https://developer.mozilla.org/en-US/docs/WebSockets/Writing_WebSocket_client_applications).  However, other client-side schemes are possible, for example, [*AutobahnJS*](https://github.com/tavendo/AutobahnJS).  Implementing *AutobahnJS* on the client-side, would require the use of the [*WAMP Protocol*](http://wamp.ws/) on the server-side (provided in AutobahnPython) as well.  The change from [*WebSockets*](https://developer.mozilla.org/en-US/docs/WebSockets), to the *WAMP Protocol* would change [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py), respectively.
 
+**Note:** The *WebSocket* protocol is [supported](http://caniuse.com/websockets) by all major browsers, except:
+
+- IE 9-
+- Opera Mini 5-7
+- Android Browser 4.3-
+
 ##Installation
 
 ###Linux Packages
