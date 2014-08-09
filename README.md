@@ -111,8 +111,8 @@ sudo chown -R jeffrey:sudo whisper
 
 Provides an open-source, real-time framework implementation for the following protocols:
 
-- The [WebSocket Protocol](http://tools.ietf.org/html/rfc6455)
-- The [Web Application Messaging Protocol](http://wamp.ws/) (WAMP)
+- [WebSocket Protocol](http://tools.ietf.org/html/rfc6455)
+- [Web Application Messaging Protocol](http://wamp.ws/) (WAMP)
 
 Either protocols, excel at [pushing data](http://autobahn.ws/python/#what-can-i-do-with-this-stuff) asynchronously between the client, and server in real-time.  In order to use the [*AutobahnPython*](https://github.com/tavendo/AutobahnPython) framework, it must first be installed:
 
