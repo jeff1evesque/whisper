@@ -41,20 +41,29 @@ $(document).ready(function() {
       ';
 
     obj_mic['details']         = '\
-      <div class="details'>\
-        <button class="show_level" onclick="FWRecorder.observeLevel();">Show Level</button>\
-        <button class="hide_level" onclick="FWRecorder.stopObservingLevel();" style="display: none;">Hide Level</button>\
-        <span id="save_button">\
-          <span id="flashcontent">\
-            <p>Your browser must have JavaScript enabled and the Adobe Flash Player installed.</p>\
+        <div class="details">\
+          <button class="show_level" onclick="FWRecorder.observeLevel();">Show Level</button>\
+          <button class="hide_level" onclick="FWRecorder.stopObservingLevel();" style="display: none;">Hide Level</button>\
+          <span id="save_button">\
+            <span id="flashcontent">\
+              <p>Your browser must have JavaScript enabled and the Adobe Flash Player installed.</p>\
+            </span>\
           </span>\
-        </span>\
-        <div id="status">Recorder Status...</div>\
-        <div>Duration: <span id="duration"></span></div>\
-        <div>Activity Level: <span id="activity_level"></span></div>\
-        <div>Upload status: <span id="upload_status"></span></div>\
-      </div>\
-    ';
+          <div id="status">Recorder Status...</div>\
+          <div>Duration: <span id="duration"></span></div>\
+          <div>Activity Level: <span id="activity_level"></span></div>\
+          <div>Upload status: <span id="upload_status"></span></div>\
+        </div>\
+      ';
+
+    obj_mic['upload_form']     = '\
+        <form id="uploadForm" name="uploadForm" action="php/upload.php">\
+          <input name="authenticity_token" value="xxxxx" type="hidden">\
+          <input name="upload_file[parent_id]" value="1" type="hidden">\
+          <input name="format" value="json" type="hidden">\
+        </form>\
+      ';
+
   }
 
 // Build HTML:
