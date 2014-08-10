@@ -25,7 +25,20 @@ $(document).ready(function() {
   }
 // HTML Structure: flash
   else {
-
+    obj_mic['control_panel']   = '\
+        <div class="control_panel audio">\
+          <a class="record_button" onclick="FWRecorder.record(\'audio\', \'audio.wav\');" href="javascript:void(0);" title="Record">\
+            <img src="assets/img/record.png" width="24" height="24" alt="Record" />\
+          </a>\
+          <a class="play_button" style="display:none;" onclick="FWRecorder.playBack(\'audio\');" href="javascript:void(0);" title="Play">\
+            <img src="assets/img/play.png" width="24" height="24" alt="Play" />\
+          </a>\
+          <a class="pause_button" style="display:none;" onclick="FWRecorder.pausePlayBack(\'audio\');" href="javascript:void(0);" title="Pause">\
+            <img src="assets/img/pause.png" width="24" height="24" alt="Pause" />\
+          </a>\
+          <div class="level"></div>\
+        </div>\
+      ';
   }
 
 // Build HTML:
