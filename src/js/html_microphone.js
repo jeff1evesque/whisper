@@ -1,6 +1,6 @@
 /**
- *  inject_html_microphone.js: injects html tailored for either WebRTC, or Flash
- *                             depending if 'getUserMedia' is supported
+ *  html_microphone.js: injects html tailored for either WebRTC, or Flash,
+ *                      depending on 'getUserMedia' browser support.
  */
 
 $(document).ready(function() {
