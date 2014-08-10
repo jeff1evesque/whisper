@@ -66,6 +66,45 @@ $(document).ready(function() {
 
     obj_mic['h4_config_mic']   = '<h4>Configure Microphone</h4>';
 
+    obj_mic['mic_config']      = '\
+        <form class="mic_config" onsubmit="return false;">\
+          <ul>\
+            <li>\
+              <label for="rate">Rate</label>\
+              <select id="rate" name="rate">\
+                <option value="44">44,100 Hz</option>\
+                <option value="16" selected>16,000 Hz</option>\
+                <option value="11">11,025 Hz</option>\
+                <option value="8">8,000 Hz</option>\
+                <option value="5">5,512 Hz</option>\
+              </select>\
+            </li>\
+            <li>\
+              <label for="gain">Gain</label>\
+              <select id="gain" name="gain"></select>\
+            </li>\
+            <li>\
+              <label for="silenceLevel">Silence Level</label>\
+              <select id="silenceLevel" name="silenceLevel"></select>\
+            </li>\
+            <li>\
+              <label for="silenceTimeout">Silence Timeout</label>\
+              <input id="silenceTimeout" name="silenceTimeout" value="2000"/>\
+            </li>\
+            <li>\
+              <input id="useEchoSuppression" name="useEchoSuppression" type="checkbox"/>\
+              <label for="useEchoSuppression">Use Echo Suppression</label>\
+            </li>\
+            <li>\
+              <input id="loopBack" name="loopBack" type="checkbox"/>\
+              <label for="loopBack">Loop Back</label>\
+            </li>\
+            <li>\
+              <button onclick="configureMicrophone();">Configure</button>\
+            </li>\
+          </ul>\
+        </form>\
+      ';
   }
 
 // Build HTML:
