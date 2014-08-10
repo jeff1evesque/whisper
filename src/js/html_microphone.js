@@ -64,6 +64,8 @@ $(document).ready(function() {
         </form>\
       ';
 
+    obj_mic['h4_config_mic']   = '<h4>Configure Microphone</h4>';
+
   }
 
 // Build HTML:
