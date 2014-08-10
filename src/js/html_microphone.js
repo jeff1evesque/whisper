@@ -23,6 +23,7 @@ $(document).ready(function() {
     obj_mic['div_volume_max']  = '<div>Volume Max: <span id="volumeMax"></span></div>';
     obj_mic['audio_controls']  = '<audio controls="controls" src="" id="audioPlayer">Audio tag not supported in your web browser</audio>';
   }
+
 // HTML Structure: flash
   else {
     obj_mic['control_panel']   = '\
