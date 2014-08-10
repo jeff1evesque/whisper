@@ -39,6 +39,22 @@ $(document).ready(function() {
           <div class="level"></div>\
         </div>\
       ';
+
+    obj_mic['details']         = '\
+      <div class="details'>\
+        <button class="show_level" onclick="FWRecorder.observeLevel();">Show Level</button>\
+        <button class="hide_level" onclick="FWRecorder.stopObservingLevel();" style="display: none;">Hide Level</button>\
+        <span id="save_button">\
+          <span id="flashcontent">\
+            <p>Your browser must have JavaScript enabled and the Adobe Flash Player installed.</p>\
+          </span>\
+        </span>\
+        <div id="status">Recorder Status...</div>\
+        <div>Duration: <span id="duration"></span></div>\
+        <div>Activity Level: <span id="activity_level"></span></div>\
+        <div>Upload status: <span id="upload_status"></span></div>\
+      </div>\
+    ';
   }
 
 // Build HTML:
