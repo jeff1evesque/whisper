@@ -10,7 +10,7 @@
   <head>
     <script src='../../src/js/jquery-1.8.3.js'></script>
     <script src='../../src/js/html_microphone.js'></script>
-    <script src='../../src/js/html_scripts.js'></script>
+    <script src='../../src/js/html_header_elements.js'></script>
     <script src='../../src/js/audioRecorder.js'></script>
   </head>
 
