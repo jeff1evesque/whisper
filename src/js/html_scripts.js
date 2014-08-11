@@ -16,6 +16,7 @@
      loadJS('../../src/js/swfobject.js');
      loadJS('../../src/js/recorder.js');
      loadJS('../../src/js/recorder_control.js');
+     loadJS('../../src/js/recorder_attributes.js');
    }
 
  }); // Closes $(document).ready(function() {
