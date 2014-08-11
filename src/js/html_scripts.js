@@ -4,6 +4,7 @@
  */
 
  $(document).ready(function() {
+
  // Local variables
    var header = $('head');
 
@@ -17,6 +18,7 @@
      loadJS('../../src/js/recorder.js');
      loadJS('../../src/js/recorder_control.js');
      loadJS('../../src/js/recorder_attributes.js');
+     loadJS('../../src/js/recorder_initialize.js');
    }
 
  }); // Closes $(document).ready(function() {
