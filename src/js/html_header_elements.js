@@ -12,6 +12,7 @@
    if (navigator.getUserMedia) {
      load_header_file('../../src/js/initializer.js', 'js');
    }
+
  // Header File: Flash 
    else {
      load_header_file('../../src/js/swfobject.js', 'js');
