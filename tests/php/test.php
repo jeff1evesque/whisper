@@ -16,7 +16,7 @@
 
   <body>
     <div class='message'>Welcome!</div>
-    <div class='microphone'>
+    <div class='container_recording'>
     </div>
   </body>
 </html>
