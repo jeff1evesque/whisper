@@ -15,6 +15,7 @@
    else {
      loadJS('../../src/js/swfobject.js');
      loadJS('../../src/js/recorder.js');
+     loadJS('../../src/js/recorder_control.js');
    }
 
  }); // Closes $(document).ready(function() {
