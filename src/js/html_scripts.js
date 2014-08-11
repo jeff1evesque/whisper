@@ -13,7 +13,7 @@
    }
  // Load Scripts: Flash 
    else {
-     loadJS('');
+     loadJS('../../src/js/swfobject.js');
    }
 
  }); // Closes $(document).ready(function() {
