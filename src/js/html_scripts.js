@@ -1,5 +1,6 @@
 /**
- *  html_script.js: injects script tags depending on 'getUserMedia' browser support.
+ *  html_script.js: dynamically injects required scripts for 'getUserMedia',
+ *                  or flash, depending on which is supported.
  */
 
  $(document).ready(function() {
