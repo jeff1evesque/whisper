@@ -8,28 +8,37 @@
  // Local variables
    var header = $('head');
 
- // Load Scipts: WebRTC 'getUserMedia'
+ // Header File: WebRTC 'getUserMedia'
    if (navigator.getUserMedia) {
-     loadJS('../../src/js/initializer.js');
+     load_header_file('../../src/js/initializer.js', 'js');
    }
- // Load Scripts: Flash 
+ // Header File: Flash 
    else {
-     loadJS('../../src/js/swfobject.js');
-     loadJS('../../src/js/recorder.js');
-     loadJS('../../src/js/recorder_control.js');
-     loadJS('../../src/js/recorder_attributes.js');
-     loadJS('../../src/js/recorder_initialize.js');
+     load_header_file('../../src/js/swfobject.js', 'js');
+     load_header_file('../../src/js/recorder.js', 'js');
+     load_header_file('../../src/js/recorder_control.js', 'js');
+     load_header_file('../../src/js/recorder_attributes.js', 'js');
+     load_header_file('../../src/js/recorder_initialize.js', 'js');
+
+     load_header_file('../../src/css/main.css', 'css');
    }
 
  }); // Closes $(document).ready(function() {
 
 
 /**
- *  loadJS: Loads the specified javascript 'file'.
+ *  load_header_file: Loads the specified javascript, or css 'file'.
  */
 
- function loadJS (file) {
-   var element = document.createElement("script");
-   element.src = file;
+ function load_header_file (file, type) {
+   if (type == 'js') {
+     var element = document.createElement('script');
+     element.src = file;
+   }
+   else {
+     var element = document.createElement('link');
+     element.href = file;
+     element.rel = 'stylesheet';
+   }
    document.body.appendChild(element);
  }
