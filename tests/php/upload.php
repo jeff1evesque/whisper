@@ -1,6 +1,7 @@
 <?php
 
-  $save_folder = dirname(dirname(__FILE__)) . '/audio/recording';
+//  $save_folder = dirname(dirname(__FILE__)) . '/audio/recording';
+  $save_folder = dirname(dirname(__FILE__));
 
   function valid_wav_file($file) {
     $handle = fopen($file, 'r');
