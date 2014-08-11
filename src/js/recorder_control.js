@@ -49,7 +49,7 @@ $(function() {
         name = arguments[1];
         $controls = controlsEl(name);
         FWRecorder.hide();
-        $controls.find('.record_button img').attr('src', 'img/stop.png');
+        $controls.find('.record_button img').attr('src', '../../src/img/stop.png');
         $controls.find('.play_button').hide();
         break;
 
@@ -58,7 +58,7 @@ $(function() {
         $controls = controlsEl(name);
         var duration = arguments[2];
         FWRecorder.show();
-        $controls.find('.record_button img').attr('src', 'img/record.png');
+        $controls.find('.record_button img').attr('src', '../../src/img/record.png');
         $('#duration').text(duration.toFixed(4) + " seconds");
         $controls.find('.play_button').show();
         break;
@@ -81,8 +81,8 @@ $(function() {
       case "playing":
         name = arguments[1];
         $controls = controlsEl(name);
-        $controls.find('.record_button img').attr('src', 'img/record.png');
-        $controls.find('.play_button img').attr('src', 'img/stop.png');
+        $controls.find('.record_button img').attr('src', '../../src/img/record.png');
+        $controls.find('.play_button img').attr('src', '../../src/img/stop.png');
         $controls.find('.pause_button').show();
         break;
 
@@ -94,8 +94,8 @@ $(function() {
       case "stopped":
         name = arguments[1];
         $controls = controlsEl(name);
-        $controls.find('.record_button img').attr('src', 'img/record.png');
-        $controls.find('.play_button img').attr('src', 'img/play.png');
+        $controls.find('.record_button img').attr('src', '../../src/img/record.png');
+        $controls.find('.play_button img').attr('src', '../../src/img/play.png');
         $controls.find('.pause_button').hide();
         break;
 
