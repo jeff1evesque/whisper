@@ -17,7 +17,7 @@ This repository contains the required submodules to stream audio from the browse
 
 ###Overview
 
-This project utilizes the [*WebSocket Protocol*](https://developer.mozilla.org/en-US/docs/WebSockets).  Some configurations need to be made at each end, in order for WebSockets to be able to communicate from the browser to the server (and vice versa):
+This project utilizes the [*WebSocket Protocol*](https://developer.mozilla.org/en-US/docs/WebSockets).  Some configurations need to be made at each end, in order for WebSocket to be able to communicate from the browser to the server (and vice versa):
 
 First, a WebSocket server needs to be defined.  Since [*AutobahnPython*](https://github.com/tavendo/AutobahnPython) is the chosen server-side implementation, the corresponding [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py) will need to utilize the respective [interfaces](https://github.com/tavendo/AutobahnPython/blob/master/autobahn/autobahn/websocket/interfaces.py).
 
@@ -28,6 +28,14 @@ Once the server has been created, the client-side implementation needs to be def
 - IE 9-
 - Opera Mini 5-7
 - Android Browser 4.3-
+
+After the WebSocket protocol has been defined, this application is able to stream to the server using the HTML5 [`getUserMedia`](https://developer.mozilla.org/en-US/docs/NavigatorUserMedia.getUserMedia) object. This object first prompts permission to access the microphone. Once granted, an audio stream object is created.  The stream is sent to the [`server.py`](https://github.com/jeff1evesque/whisper/blob/master/websocket/server.py), where it can be accessed, and modified.
+
+Unfortunately, not all browsers (Internet Explorer, Safari, and mobile devices) support the  `getUserMedia` object.  In particular, Internet Explorer claims to [support](http://status.modern.ie/mediacaptureandstreams?term=getUser) this feature in later releases, while Safari supports its own [streaming API](https://developer.apple.com/streaming/).  Mobile devices will need to incorpoarte a framework such as [Cordova](http://cordova.apache.org/), or [Phonegap](http://phonegap.com/) in order to support audio streaming.
+
+Since `getUserMedia` has not been adopted by all browser, a fallback is required.  In this project, a basic flash fallback has been implemented.  This implementation requires users to start, then stop recording an audio, and click upload, before the entire audio recording is saved to the server.  Later releases for this project, may incorporate a flash [implementation](https://github.com/jeff1evesque/whisper/issues/71) that streams audio from the browser to server, along with a mobile device [polyfill](https://github.com/jeff1evesque/whisper/issues/165).
+
+**Note:** to see a working example of this project, refer to [`test.php`](https://github.com/jeff1evesque/whisper/blob/master/tests/php/test.php).
 
 ##Installation
 
