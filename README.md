@@ -35,7 +35,7 @@ Unfortunately, not all browsers (Internet Explorer, Safari, and mobile devices) 
 
 Since `getUserMedia` has not been adopted by all browser, a fallback is required.  In this project, a basic flash fallback has been implemented.  This implementation requires users to start, then stop recording an audio, and click upload, before the entire audio recording is saved to the server.  Later releases for this project, may incorporate a flash [implementation](https://github.com/jeff1evesque/whisper/issues/71) that streams audio from the browser to server, along with a mobile device [polyfill](https://github.com/jeff1evesque/whisper/issues/165).
 
-**Note: to see a working example of this project, refer to [`test.php`](https://github.com/jeff1evesque/whisper/blob/master/tests/php/test.php).
+**Note:** to see a working example of this project, refer to [`test.php`](https://github.com/jeff1evesque/whisper/blob/master/tests/php/test.php).
 
 ##Installation
 
