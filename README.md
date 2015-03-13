@@ -48,6 +48,8 @@ sudo apt-get install libappindicator1
 sudo apt-get install libindicator7
 ```
 
+**Note:** `libappindicator1`, and `libindicator7` are dependencies for installing the below `google-chrome-stable`.
+
 ###Google Chrome
 
 This project requires testing the functionality of [`getUserMedia`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator.getUserMedia).  The [Google Chrome](https://www.google.com/intl/en_us/chrome/browser/) browser, ensures, and provides this functionality.
