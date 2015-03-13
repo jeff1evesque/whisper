@@ -44,11 +44,10 @@ Since `getUserMedia` has not been adopted by all browser, a fallback is required
 The following packages need to be installed through terminal in Ubuntu:
 
 ```
+# Google Chrome Dependencies:
 sudo apt-get install libappindicator1
 sudo apt-get install libindicator7
 ```
-
-**Note:** `libappindicator1`, and `libindicator7` are dependencies for installing the below `google-chrome-stable`.
 
 ###Google Chrome
 
